@@ -1,106 +1,56 @@
-# Spectra
+# Spectra: Cryptographic Intelligence Platform
 
 [![Build Status](https://github.com/HarshalPatel1972/spectra/actions/workflows/ci.yml/badge.svg)](https://github.com/HarshalPatel1972/spectra/actions)
 [![Go Version](https://img.shields.io/badge/Go-1.25-blue.svg)](https://go.dev/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![CycloneDX 1.7](https://img.shields.io/badge/CycloneDX-1.7-blue)](https://cyclonedx.org)
 
-**Cryptographic Asset Discovery & Quantum Risk Intelligence CLI**
+> *"See every cipher. Own your migration."*
 
-> "See every cipher. Own your migration."
+Spectra is an enterprise-grade **Cryptographic Intelligence Platform** and **PQC Migration Engine**. Built as a fast, zero-dependency Go binary, Spectra scans your source code, configuration files, dependency manifests, live TLS endpoints, and OCI container images to discover exactly what cryptography your organization relies on.
 
-Spectra is a production-grade command-line tool that scans codebases, X.509 certificates, configuration files, and dependency manifests to discover every cryptographic algorithm in use, score each finding against quantum-computing threat models, and generate a Cryptographic Bill of Materials (CBOM) in the CycloneDX format.
+It automatically grades findings against a proprietary **Quantum Risk Score (QRS)**, enforces compliance (CNSA 2.0, NIST), and simulates exactly what will break when you migrate to Post-Quantum Cryptography (PQC).
 
-## Architecture
+## Core Capabilities
 
-```mermaid
-graph TD
-    A[Input: Repo, Image, TLS URL] --> B[Orchestrator]
-    B --> C{Scanners}
-    C --> D[Code Scanner]
-    C --> E[Cert Scanner]
-    C --> F[Deps Scanner]
-    C --> G[Config Scanner]
-    D --> H[Detector Engine]
-    E --> H
-    F --> H
-    G --> H
-    H --> I[QRS & Priority Scoring]
-    I --> J[Terminal Report]
-    I --> K[JSON Output]
-    I --> L[CBOM Generator]
-    I --> M[Web Dashboard]
-```
+- **Omni-Asset Scanning**: Deep inspection of Source Code (Go, Python, Java, JS), Certificates, Dependency Manifests, and Config files.
+- **Live Infrastructure Interrogation**: Connect to live servers (`spectra endpoint`) or scan Docker images layer-by-layer (`spectra container scan`) without needing a daemon.
+- **Compliance Engine**: Instantly flags violations of NSA CNSA 2.0, NIST SP 800-131A, PCI DSS v4.0, and FIPS 140-3 (`spectra compliance`).
+- **Cryptographic Knowledge Graph**: Translates your codebase into a dependency graph to calculate the blast radius of deprecating an algorithm (`spectra blast`).
+- **Migration Simulation**: Simulates architectural transitions (e.g., RSA to ML-KEM) to detect breaking changes before they happen (`spectra simulate`).
+- **Temporal Tracking**: Uses Git Blame to track drift, calculate migration velocity, and project your PQC-Ready Date (`spectra history`).
+- **Executive Deliverables**: Generates board-ready HTML reports detailing your Cryptographic Posture Score (CPS) and Cryptographic Agility Index (CAI) (`spectra report executive`), alongside CycloneDX CBOM JSON.
 
 ## Quick Start
 
 ```bash
-# Basic terminal scan of current directory
-spectra scan .
+# Install via NPM (or use Homebrew / Go Install)
+npm install -g spectra-crypto-cli
 
-# Scan an OCI Container Image
-spectra scan --image alpine:latest
+# 1. Run a persistent scan of your current directory
+spectra scan . --persist
 
-# Scan a TLS Endpoint
-spectra scan --url example.com:443
+# 2. Check the scan against Compliance Frameworks
+spectra compliance --scan-id <SCAN-ID>
 
-# Start the interactive web dashboard
-spectra dashboard
+# 3. Simulate migrating away from an insecure algorithm
+spectra simulate --scan-id <SCAN-ID> --from RSA --to ML-KEM
+
+# 4. Generate the Executive Board Report
+spectra report executive --scan-id <SCAN-ID>
 ```
 
 ## Output Formats
 
-### Terminal Output
-Spectra provides a rich, ANSI-colored terminal UI showing findings, aggregate risks, and a prioritized action plan.
+Spectra outputs data where you need it:
+- **Terminal UI**: Beautiful, ANSI-colored tables and alerts.
+- **CycloneDX CBOM**: Industry-standard JSON/XML bill of materials.
+- **HTML Dashboards**: CISO-level visual reports.
+- **GraphViz / Mermaid**: Export your cryptographic architecture visually.
 
-### CBOM Output
-Generates CycloneDX formatted Cryptographic Bill of Materials.
-```json
-{
-  "bomFormat": "CycloneDX",
-  "specVersion": "1.6",
-  "version": 1,
-  "components": [
-    {
-      "type": "cryptographic-asset",
-      "name": "RSA",
-      "version": "2048",
-      "description": "RSA (2048-bit)",
-      "properties": [
-        { "name": "spectra:qrs", "value": "50" }
-      ]
-    }
-  ]
-}
-```
+## Database & State
 
-## Quantum Risk Score (QRS)
-
-Spectra evaluates algorithms using a proprietary 0-100 scoring model:
-
-| Score Range | Risk Band | Meaning |
-| :--- | :--- | :--- |
-| **80-100** | CRITICAL | Broken algorithm (MD5) or highly vulnerable to Shor's algorithm |
-| **60-79** | HIGH | Weak algorithm (SHA1, RSA-1024) |
-| **40-59** | MEDIUM | Acceptable for now, but not quantum-safe (RSA-2048) |
-| **20-39** | LOW | Strong algorithm (AES-256, SHA-3) |
-| **0-19** | SAFE | Post-Quantum Cryptography (ML-KEM, ML-DSA) |
-
-## CLI Reference
-
-| Command | Description | Example |
-| :--- | :--- | :--- |
-| `spectra scan [dir]` | Scans a directory | `spectra scan ./src` |
-| `spectra scan --image` | Scans a container image | `spectra scan --image ubuntu:latest` |
-| `spectra scan --url` | Scans a TLS endpoint | `spectra scan --url google.com:443` |
-| `spectra dashboard` | Starts the embedded Web Dashboard | `spectra dashboard --port 8080` |
-| `spectra diff` | Compares two CBOMs to track progress | `spectra diff old.json new.json` |
-| `spectra version` | Displays the current version | `spectra version` |
-
-## Roadmap
-- [x] Phase 1: MVP Core Scanners
-- [x] Phase 2: Git Blame Integration, TLS Scanning, Container Scanning, Web Dashboard
-- [ ] Phase 3: Advanced CI/CD integrations and API Server
+Spectra uses a purely embedded `modernc.org/sqlite` database stored locally at `~/.spectra/state.db`. There are no external databases to configure, no cloud uploads, and your intellectual property never leaves your machine.
 
 ## Contributing
+
 Contributions are welcome! Please open an issue before submitting a large PR. Ensure you run `go test ./...` and `golangci-lint` before committing.
