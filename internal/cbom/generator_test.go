@@ -37,8 +37,11 @@ func TestGenerateCBOM(t *testing.T) {
 		t.Fatalf("GenerateCBOM failed: %v", err)
 	}
 
-	// Make sure the UUID is stable or ignore it for comparison
+	// Make sure the UUID and Timestamp are stable
 	bom.SerialNumber = "urn:uuid:00000000-0000-0000-0000-000000000000"
+	if bom.Metadata != nil {
+		bom.Metadata.Timestamp = ""
+	}
 
 	b, _ := json.MarshalIndent(bom, "", "  ")
 	
