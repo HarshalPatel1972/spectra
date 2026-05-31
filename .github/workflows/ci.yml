@@ -28,6 +28,7 @@ jobs:
         cd web
         npm ci
         npm run build
+        ls -la dist/
 
     - name: Build
       run: go build -v ./...
