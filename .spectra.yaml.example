@@ -1,0 +1,55 @@
+# ============================================================================
+# .spectra.yaml – Spectra Configuration File
+# ============================================================================
+#
+# Place this file in the root of your project and Spectra will load it
+# automatically. Every key is optional; defaults are shown below.
+
+# --------------------------------------------------------------------------
+# scan – controls which files and scanners to use
+# --------------------------------------------------------------------------
+scan:
+  # Glob patterns to exclude from scanning (gitignore-style).
+  # Common choices: vendor dirs, generated code, test fixtures.
+  exclude:
+    - "vendor/**"
+    - "node_modules/**"
+    - "**/*_test.go"
+    - "**/*.min.js"
+
+  # Restrict scanning to specific file extensions (without leading dot).
+  # Leave empty to scan all supported extensions.
+  extensions: []
+
+  # Which scanner modules to enable.
+  # Available: code, cert, deps, config
+  scanners:
+    - code
+    - cert
+    - deps
+    - config
+
+  # Maximum number of parallel scanner goroutines.
+  # 0 = auto-detect (runtime.NumCPU()).
+  concurrency: 0
+
+# --------------------------------------------------------------------------
+# output – controls how and where results are written
+# --------------------------------------------------------------------------
+output:
+  # Output format(s). Multiple formats can be produced per run.
+  # Available: terminal, json, cbom, html
+  formats:
+    - terminal
+
+  # Directory where file-based outputs (json, cbom, html) are written.
+  dir: ./spectra-out
+
+# --------------------------------------------------------------------------
+# ci – CI/CD integration settings
+# --------------------------------------------------------------------------
+ci:
+  # Set the minimum severity that causes a non-zero exit code.
+  # Acceptable values: critical, high, medium, low, "" (disabled).
+  # When set, Spectra exits 1 if any finding meets or exceeds this level.
+  fail_on: ""
