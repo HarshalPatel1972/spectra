@@ -7,11 +7,15 @@ import (
 	"strings"
 
 	"github.com/HarshalPatel1972/spectra/internal/cbom"
+	"github.com/HarshalPatel1972/spectra/internal/compliance"
 	"github.com/HarshalPatel1972/spectra/internal/config"
 	"github.com/HarshalPatel1972/spectra/internal/detector"
+	"github.com/HarshalPatel1972/spectra/internal/graph"
+	"github.com/HarshalPatel1972/spectra/internal/persistence"
 	"github.com/HarshalPatel1972/spectra/internal/report"
 	"github.com/HarshalPatel1972/spectra/internal/scanner"
 	"github.com/HarshalPatel1972/spectra/rules"
+	"github.com/google/uuid"
 	"github.com/spf13/cobra"
 )
 
@@ -33,6 +37,8 @@ var (
 	concurrency   int
 	targetURL     string
 	targetImage   string
+	persist       bool
+	baselineName  string
 )
 
 // scanCmd implements the 'spectra scan' subcommand that performs cryptographic
@@ -58,6 +64,8 @@ func init() {
 	scanCmd.Flags().IntVar(&concurrency, "concurrency", 0, "number of parallel scanner goroutines (0 = auto)")
 	scanCmd.Flags().StringVar(&targetURL, "url", "", "TLS endpoint to scan (e.g. example.com:443)")
 	scanCmd.Flags().StringVar(&targetImage, "image", "", "Container image to scan (e.g. ubuntu:latest)")
+	scanCmd.Flags().BoolVar(&persist, "persist", false, "save scan results to state database")
+	scanCmd.Flags().StringVar(&baselineName, "baseline", "", "tag the scan with a baseline name (requires --persist)")
 
 	rootCmd.AddCommand(scanCmd)
 }
@@ -149,6 +157,12 @@ func runScan(cmd *cobra.Command, args []string) error {
 		}
 	}
 
+	if persist {
+		if err := saveToStateDB(result); err != nil {
+			return fmt.Errorf("saving to state db: %w", err)
+		}
+	}
+
 	// If fail-on is set, check findings and return appropriate exit code
 	if cfg.CI.FailOn != "" {
 		failThreshold := parseFailOnBand(cfg.CI.FailOn)
@@ -169,6 +183,73 @@ func runScan(cmd *cobra.Command, args []string) error {
 		_, _ = fmt.Fprintf(cmd.OutOrStdout(), "Scanning %s ...\n", targetPath)
 		_, _ = fmt.Fprintf(cmd.OutOrStdout(), "Scanners: %s\n", strings.Join(cfg.Scan.Scanners, ", "))
 		_, _ = fmt.Fprintf(cmd.OutOrStdout(), "Output:   %s\n", strings.Join(cfg.Output.Formats, ", "))
+	}
+
+	return nil
+}
+
+func saveToStateDB(result *scanner.ScanResult) error {
+	store, err := persistence.NewStore("")
+	if err != nil {
+		return err
+	}
+	defer store.Close()
+
+	scanID := uuid.New().String()
+	if err := store.SaveScan(scanID, result); err != nil {
+		return err
+	}
+
+	if len(result.Findings) > 0 {
+		if err := store.SaveFindings(scanID, result.Findings); err != nil {
+			return err
+		}
+	}
+
+	g := graph.BuildGraph(result)
+	var nodes []persistence.GraphNode
+	for _, n := range g.Nodes {
+		nodes = append(nodes, persistence.GraphNode{
+			ID:         n.ID,
+			NodeType:   string(n.Type),
+			Label:      n.Label,
+			Properties: "{}", // Could be serialized n.Properties
+		})
+	}
+	var edges []persistence.GraphEdge
+	for _, e := range g.Edges {
+		edges = append(edges, persistence.GraphEdge{
+			ID:       e.ID,
+			FromNode: e.From,
+			ToNode:   e.To,
+			EdgeType: string(e.Type),
+			Weight:   e.Weight,
+		})
+	}
+
+	if len(nodes) > 0 || len(edges) > 0 {
+		if err := store.SaveGraph(scanID, nodes, edges); err != nil {
+			return err
+		}
+	}
+
+	gaps := compliance.EvaluateFindings(result.Findings)
+	if len(gaps) > 0 {
+		if err := store.SaveComplianceGaps(gaps); err != nil {
+			return err
+		}
+	}
+
+	if baselineName != "" {
+		err := store.SaveBaseline(persistence.Baseline{
+			Name:        baselineName,
+			ScanID:      scanID,
+			CreatedAt:   result.CompletedAt,
+			Description: "Baseline taken via CLI",
+		})
+		if err != nil {
+			return fmt.Errorf("saving baseline: %w", err)
+		}
 	}
 
 	return nil

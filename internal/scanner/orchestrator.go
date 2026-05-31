@@ -34,6 +34,8 @@ type Finding struct {
 	CommitHash      string                 `json:"commit_hash,omitempty"`
 	IntroducedAt    time.Time              `json:"introduced_at,omitempty"`
 	RelatedIDs      []string               `json:"related_ids,omitempty"`
+	ContainerLayer  string                 `json:"container_layer,omitempty"`
+	EndpointHost    string                 `json:"endpoint_host,omitempty"`
 }
 
 // ActionItem represents a prioritised remediation action derived from findings.
