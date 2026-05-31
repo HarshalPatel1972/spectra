@@ -20,6 +20,32 @@ It automatically grades findings against a proprietary **Quantum Risk Score (QRS
 - **Temporal Tracking**: Uses Git Blame to track drift, calculate migration velocity, and project your PQC-Ready Date (`spectra history`).
 - **Executive Deliverables**: Generates board-ready HTML reports detailing your Cryptographic Posture Score (CPS) and Cryptographic Agility Index (CAI) (`spectra report executive`), alongside CycloneDX CBOM JSON.
 
+### The Cryptographic Knowledge Graph
+Spectra uniquely translates your entire codebase into a dependency graph. This allows you to visually map exactly where weak algorithms are used and calculate the "blast radius" if you deprecate them.
+
+```mermaid
+graph TD
+    %% Nodes
+    A["RSA-1024"]:::critical
+    B["ECDSA-256"]:::safe
+    C["TLS Endpoint (google.com:443)"]:::source
+    D["Container (alpine:latest)"]:::source
+    E["src/auth/login.go"]:::source
+    F["go.mod"]:::source
+    
+    %% Edges
+    C -->|Uses| A
+    C -->|Uses| B
+    E -->|Calls| A
+    F -->|Provides| A
+    D -->|Contains| A
+
+    %% Styling
+    classDef critical fill:#ffebee,stroke:#c62828,stroke-width:2px,color:#b71c1c;
+    classDef safe fill:#e8f5e9,stroke:#2e7d32,stroke-width:2px,color:#1b5e20;
+    classDef source fill:#e3f2fd,stroke:#1565c0,stroke-width:2px,color:#0d47a1;
+```
+
 ## Quick Start
 
 ```bash
