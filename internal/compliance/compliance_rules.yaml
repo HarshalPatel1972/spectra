@@ -1,0 +1,30 @@
+rules:
+  - framework: "CNSA_2_0"
+    requirement_id: "CNSA-1"
+    requirement_desc: "Software and firmware signing must transition to Leighton-Micali Signature (LMS) or eXtended Merkle Signature Scheme (XMSS) by 2025."
+    severity: "MANDATORY"
+    deadline: "2025-12-31T23:59:59Z"
+    deadline_label: "Exclusive Use Transition"
+    conditions:
+      source: "CODE"
+      context: "digital_signature"
+      algorithms: ["RSA", "ECDSA"]
+
+  - framework: "CNSA_2_0"
+    requirement_id: "CNSA-2"
+    requirement_desc: "Key establishment must use ML-KEM. RSA and Diffie-Hellman are deprecated."
+    severity: "MANDATORY"
+    deadline: "2030-12-31T23:59:59Z"
+    deadline_label: "Exclusive Use"
+    conditions:
+      algorithms: ["RSA", "ECDH", "DH"]
+
+  - framework: "NIST_800_131A"
+    requirement_id: "NIST-1"
+    requirement_desc: "Symmetric keys must be >= 112 bits. SHA-1 is disallowed for digital signatures."
+    severity: "MANDATORY"
+    deadline: "2023-12-31T23:59:59Z"
+    deadline_label: "Disallowed"
+    conditions:
+      algorithms: ["SHA1"]
+      context: "digital_signature"
