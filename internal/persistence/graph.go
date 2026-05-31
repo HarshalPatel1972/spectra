@@ -2,6 +2,7 @@ package persistence
 
 import (
 	"fmt"
+	"strings"
 )
 
 // GraphNode represents a node in the cryptographic relationship graph.
@@ -39,7 +40,8 @@ func (s *Store) SaveGraph(scanID string, nodes []GraphNode, edges []GraphEdge) e
 	defer nodeStmt.Close()
 
 	for _, n := range nodes {
-		_, err := nodeStmt.Exec(n.ID, scanID, n.NodeType, n.Label, n.Properties)
+		dbID := scanID + "-" + n.ID
+		_, err := nodeStmt.Exec(dbID, scanID, n.NodeType, n.Label, n.Properties)
 		if err != nil {
 			return fmt.Errorf("inserting node %s: %w", n.ID, err)
 		}
@@ -53,7 +55,10 @@ func (s *Store) SaveGraph(scanID string, nodes []GraphNode, edges []GraphEdge) e
 	defer edgeStmt.Close()
 
 	for _, e := range edges {
-		_, err := edgeStmt.Exec(e.ID, scanID, e.FromNode, e.ToNode, e.EdgeType, e.Weight)
+		dbID := scanID + "-" + e.ID
+		fromNode := scanID + "-" + e.FromNode
+		toNode := scanID + "-" + e.ToNode
+		_, err := edgeStmt.Exec(dbID, scanID, fromNode, toNode, e.EdgeType, e.Weight)
 		if err != nil {
 			return fmt.Errorf("inserting edge %s: %w", e.ID, err)
 		}
@@ -77,9 +82,11 @@ func (s *Store) GetGraph(scanID string) ([]GraphNode, []GraphEdge, error) {
 	var nodes []GraphNode
 	for nodeRows.Next() {
 		var n GraphNode
-		if err := nodeRows.Scan(&n.ID, &n.NodeType, &n.Label, &n.Properties); err != nil {
+		var dbID string
+		if err := nodeRows.Scan(&dbID, &n.NodeType, &n.Label, &n.Properties); err != nil {
 			return nil, nil, err
 		}
+		n.ID = strings.TrimPrefix(dbID, scanID+"-")
 		n.ScanID = scanID
 		nodes = append(nodes, n)
 	}
@@ -94,9 +101,13 @@ func (s *Store) GetGraph(scanID string) ([]GraphNode, []GraphEdge, error) {
 	var edges []GraphEdge
 	for edgeRows.Next() {
 		var e GraphEdge
-		if err := edgeRows.Scan(&e.ID, &e.FromNode, &e.ToNode, &e.EdgeType, &e.Weight); err != nil {
+		var dbID, dbFrom, dbTo string
+		if err := edgeRows.Scan(&dbID, &dbFrom, &dbTo, &e.EdgeType, &e.Weight); err != nil {
 			return nil, nil, err
 		}
+		e.ID = strings.TrimPrefix(dbID, scanID+"-")
+		e.FromNode = strings.TrimPrefix(dbFrom, scanID+"-")
+		e.ToNode = strings.TrimPrefix(dbTo, scanID+"-")
 		e.ScanID = scanID
 		edges = append(edges, e)
 	}
