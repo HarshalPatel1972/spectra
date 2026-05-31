@@ -1,10 +1,10 @@
 {
   "bomFormat": "CycloneDX",
   "specVersion": "1.6",
-  "serialNumber": "urn:uuid:0700305a-f139-47d6-a357-9aec7d5c281e",
+  "serialNumber": "urn:uuid:54ebb1b6-d278-403c-85db-f096b9fd0cb4",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-05-30T19:48:11Z",
+    "timestamp": "2026-05-31T12:34:09Z",
     "tools": {
       "components": [
         {
@@ -16,6 +16,144 @@
     }
   },
   "components": [
+    {
+      "type": "library",
+      "name": "3DES",
+      "description": "Triple DES (3DES/DESede)",
+      "properties": [
+        {
+          "name": "spectra:qrs",
+          "value": "72"
+        },
+        {
+          "name": "spectra:risk-band",
+          "value": "HIGH"
+        },
+        {
+          "name": "spectra:effort",
+          "value": "MEDIUM"
+        },
+        {
+          "name": "spectra:occurrences",
+          "value": "46"
+        },
+        {
+          "name": "spectra:family",
+          "value": "symmetric-encryption"
+        },
+        {
+          "name": "spectra:pqc-safe",
+          "value": "false"
+        },
+        {
+          "name": "spectra:cwe",
+          "value": "CWE-327"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "3DES",
+      "version": "128",
+      "description": "Triple DES (3DES/DESede)",
+      "properties": [
+        {
+          "name": "spectra:qrs",
+          "value": "70"
+        },
+        {
+          "name": "spectra:risk-band",
+          "value": "HIGH"
+        },
+        {
+          "name": "spectra:effort",
+          "value": "MEDIUM"
+        },
+        {
+          "name": "spectra:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "spectra:family",
+          "value": "symmetric-encryption"
+        },
+        {
+          "name": "spectra:pqc-safe",
+          "value": "false"
+        },
+        {
+          "name": "spectra:cwe",
+          "value": "CWE-327"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "3DES",
+      "version": "256",
+      "description": "Triple DES (3DES/DESede)",
+      "properties": [
+        {
+          "name": "spectra:qrs",
+          "value": "72"
+        },
+        {
+          "name": "spectra:risk-band",
+          "value": "HIGH"
+        },
+        {
+          "name": "spectra:effort",
+          "value": "MEDIUM"
+        },
+        {
+          "name": "spectra:occurrences",
+          "value": "3"
+        },
+        {
+          "name": "spectra:family",
+          "value": "symmetric-encryption"
+        },
+        {
+          "name": "spectra:pqc-safe",
+          "value": "false"
+        },
+        {
+          "name": "spectra:cwe",
+          "value": "CWE-327"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "AES128",
+      "description": "AES-128",
+      "properties": [
+        {
+          "name": "spectra:qrs",
+          "value": "27"
+        },
+        {
+          "name": "spectra:risk-band",
+          "value": "LOW"
+        },
+        {
+          "name": "spectra:effort",
+          "value": "EASY"
+        },
+        {
+          "name": "spectra:occurrences",
+          "value": "34"
+        },
+        {
+          "name": "spectra:family",
+          "value": "symmetric-encryption"
+        },
+        {
+          "name": "spectra:pqc-safe",
+          "value": "false"
+        }
+      ]
+    },
     {
       "type": "library",
       "name": "AES128",
@@ -36,7 +174,39 @@
         },
         {
           "name": "spectra:occurrences",
-          "value": "1"
+          "value": "12"
+        },
+        {
+          "name": "spectra:family",
+          "value": "symmetric-encryption"
+        },
+        {
+          "name": "spectra:pqc-safe",
+          "value": "false"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "AES128",
+      "version": "256",
+      "description": "AES-128",
+      "properties": [
+        {
+          "name": "spectra:qrs",
+          "value": "27"
+        },
+        {
+          "name": "spectra:risk-band",
+          "value": "LOW"
+        },
+        {
+          "name": "spectra:effort",
+          "value": "EASY"
+        },
+        {
+          "name": "spectra:occurrences",
+          "value": "3"
         },
         {
           "name": "spectra:family",
@@ -55,7 +225,7 @@
       "properties": [
         {
           "name": "spectra:qrs",
-          "value": "85"
+          "value": "87"
         },
         {
           "name": "spectra:risk-band",
@@ -67,11 +237,117 @@
         },
         {
           "name": "spectra:occurrences",
-          "value": "2"
+          "value": "193"
         },
         {
           "name": "spectra:family",
           "value": "symmetric-encryption"
+        },
+        {
+          "name": "spectra:pqc-safe",
+          "value": "false"
+        },
+        {
+          "name": "spectra:cwe",
+          "value": "CWE-327"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "DES",
+      "version": "256",
+      "description": "DES (Data Encryption Standard)",
+      "properties": [
+        {
+          "name": "spectra:qrs",
+          "value": "87"
+        },
+        {
+          "name": "spectra:risk-band",
+          "value": "CRITICAL"
+        },
+        {
+          "name": "spectra:effort",
+          "value": "MEDIUM"
+        },
+        {
+          "name": "spectra:occurrences",
+          "value": "3"
+        },
+        {
+          "name": "spectra:family",
+          "value": "symmetric-encryption"
+        },
+        {
+          "name": "spectra:pqc-safe",
+          "value": "false"
+        },
+        {
+          "name": "spectra:cwe",
+          "value": "CWE-327"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "DH",
+      "description": "DH (Diffie–Hellman)",
+      "properties": [
+        {
+          "name": "spectra:qrs",
+          "value": "85"
+        },
+        {
+          "name": "spectra:risk-band",
+          "value": "CRITICAL"
+        },
+        {
+          "name": "spectra:effort",
+          "value": "HARD"
+        },
+        {
+          "name": "spectra:occurrences",
+          "value": "3"
+        },
+        {
+          "name": "spectra:family",
+          "value": "key-agreement"
+        },
+        {
+          "name": "spectra:pqc-safe",
+          "value": "false"
+        },
+        {
+          "name": "spectra:cwe",
+          "value": "CWE-327"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "DSA",
+      "description": "DSA (Digital Signature Algorithm)",
+      "properties": [
+        {
+          "name": "spectra:qrs",
+          "value": "92"
+        },
+        {
+          "name": "spectra:risk-band",
+          "value": "CRITICAL"
+        },
+        {
+          "name": "spectra:effort",
+          "value": "HARD"
+        },
+        {
+          "name": "spectra:occurrences",
+          "value": "119"
+        },
+        {
+          "name": "spectra:family",
+          "value": "signature"
         },
         {
           "name": "spectra:pqc-safe",
@@ -103,11 +379,190 @@
         },
         {
           "name": "spectra:occurrences",
-          "value": "1"
+          "value": "5"
         },
         {
           "name": "spectra:family",
           "value": "signature"
+        },
+        {
+          "name": "spectra:pqc-safe",
+          "value": "false"
+        },
+        {
+          "name": "spectra:cwe",
+          "value": "CWE-327"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "ECDH",
+      "description": "ECDH (Elliptic Curve Diffie–Hellman)",
+      "properties": [
+        {
+          "name": "spectra:qrs",
+          "value": "92"
+        },
+        {
+          "name": "spectra:risk-band",
+          "value": "CRITICAL"
+        },
+        {
+          "name": "spectra:effort",
+          "value": "HARD"
+        },
+        {
+          "name": "spectra:occurrences",
+          "value": "30"
+        },
+        {
+          "name": "spectra:family",
+          "value": "key-agreement"
+        },
+        {
+          "name": "spectra:pqc-safe",
+          "value": "false"
+        },
+        {
+          "name": "spectra:cwe",
+          "value": "CWE-327"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "ECDH",
+      "version": "128",
+      "description": "ECDH (Elliptic Curve Diffie–Hellman)",
+      "properties": [
+        {
+          "name": "spectra:qrs",
+          "value": "95"
+        },
+        {
+          "name": "spectra:risk-band",
+          "value": "CRITICAL"
+        },
+        {
+          "name": "spectra:effort",
+          "value": "HARD"
+        },
+        {
+          "name": "spectra:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "spectra:family",
+          "value": "key-agreement"
+        },
+        {
+          "name": "spectra:pqc-safe",
+          "value": "false"
+        },
+        {
+          "name": "spectra:cwe",
+          "value": "CWE-327"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "ECDH",
+      "version": "256",
+      "description": "ECDH (Elliptic Curve Diffie–Hellman)",
+      "properties": [
+        {
+          "name": "spectra:qrs",
+          "value": "90"
+        },
+        {
+          "name": "spectra:risk-band",
+          "value": "CRITICAL"
+        },
+        {
+          "name": "spectra:effort",
+          "value": "HARD"
+        },
+        {
+          "name": "spectra:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "spectra:family",
+          "value": "key-agreement"
+        },
+        {
+          "name": "spectra:pqc-safe",
+          "value": "false"
+        },
+        {
+          "name": "spectra:cwe",
+          "value": "CWE-327"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "ECDH",
+      "version": "512",
+      "description": "ECDH (Elliptic Curve Diffie–Hellman)",
+      "properties": [
+        {
+          "name": "spectra:qrs",
+          "value": "85"
+        },
+        {
+          "name": "spectra:risk-band",
+          "value": "CRITICAL"
+        },
+        {
+          "name": "spectra:effort",
+          "value": "HARD"
+        },
+        {
+          "name": "spectra:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "spectra:family",
+          "value": "key-agreement"
+        },
+        {
+          "name": "spectra:pqc-safe",
+          "value": "false"
+        },
+        {
+          "name": "spectra:cwe",
+          "value": "CWE-327"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "ECDH",
+      "version": "4096",
+      "description": "ECDH (Elliptic Curve Diffie–Hellman)",
+      "properties": [
+        {
+          "name": "spectra:qrs",
+          "value": "75"
+        },
+        {
+          "name": "spectra:risk-band",
+          "value": "HIGH"
+        },
+        {
+          "name": "spectra:effort",
+          "value": "HARD"
+        },
+        {
+          "name": "spectra:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "spectra:family",
+          "value": "key-agreement"
         },
         {
           "name": "spectra:pqc-safe",
@@ -138,7 +593,7 @@
         },
         {
           "name": "spectra:occurrences",
-          "value": "4"
+          "value": "265"
         },
         {
           "name": "spectra:family",
@@ -174,11 +629,82 @@
         },
         {
           "name": "spectra:occurrences",
-          "value": "1"
+          "value": "10"
         },
         {
           "name": "spectra:family",
           "value": "signature"
+        },
+        {
+          "name": "spectra:pqc-safe",
+          "value": "false"
+        },
+        {
+          "name": "spectra:cwe",
+          "value": "CWE-327"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "ElGamal",
+      "description": "ElGamal Encryption",
+      "properties": [
+        {
+          "name": "spectra:qrs",
+          "value": "87"
+        },
+        {
+          "name": "spectra:risk-band",
+          "value": "CRITICAL"
+        },
+        {
+          "name": "spectra:effort",
+          "value": "HARD"
+        },
+        {
+          "name": "spectra:occurrences",
+          "value": "10"
+        },
+        {
+          "name": "spectra:family",
+          "value": "asymmetric-encryption"
+        },
+        {
+          "name": "spectra:pqc-safe",
+          "value": "false"
+        },
+        {
+          "name": "spectra:cwe",
+          "value": "CWE-327"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "ElGamal",
+      "version": "256",
+      "description": "ElGamal Encryption",
+      "properties": [
+        {
+          "name": "spectra:qrs",
+          "value": "85"
+        },
+        {
+          "name": "spectra:risk-band",
+          "value": "CRITICAL"
+        },
+        {
+          "name": "spectra:effort",
+          "value": "HARD"
+        },
+        {
+          "name": "spectra:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "spectra:family",
+          "value": "asymmetric-encryption"
         },
         {
           "name": "spectra:pqc-safe",
@@ -209,7 +735,7 @@
         },
         {
           "name": "spectra:occurrences",
-          "value": "7"
+          "value": "374"
         },
         {
           "name": "spectra:family",
@@ -228,7 +754,7 @@
     {
       "type": "library",
       "name": "MD5",
-      "version": "256",
+      "version": "128",
       "description": "MD5",
       "properties": [
         {
@@ -263,6 +789,446 @@
     },
     {
       "type": "library",
+      "name": "MD5",
+      "version": "256",
+      "description": "MD5",
+      "properties": [
+        {
+          "name": "spectra:qrs",
+          "value": "82"
+        },
+        {
+          "name": "spectra:risk-band",
+          "value": "CRITICAL"
+        },
+        {
+          "name": "spectra:effort",
+          "value": "EASY"
+        },
+        {
+          "name": "spectra:occurrences",
+          "value": "11"
+        },
+        {
+          "name": "spectra:family",
+          "value": "hash"
+        },
+        {
+          "name": "spectra:pqc-safe",
+          "value": "false"
+        },
+        {
+          "name": "spectra:cwe",
+          "value": "CWE-328"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "MD5",
+      "version": "1024",
+      "description": "MD5",
+      "properties": [
+        {
+          "name": "spectra:qrs",
+          "value": "80"
+        },
+        {
+          "name": "spectra:risk-band",
+          "value": "CRITICAL"
+        },
+        {
+          "name": "spectra:effort",
+          "value": "EASY"
+        },
+        {
+          "name": "spectra:occurrences",
+          "value": "2"
+        },
+        {
+          "name": "spectra:family",
+          "value": "hash"
+        },
+        {
+          "name": "spectra:pqc-safe",
+          "value": "false"
+        },
+        {
+          "name": "spectra:cwe",
+          "value": "CWE-328"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "ML-DSA",
+      "description": "ML-DSA (FIPS 204 / Dilithium)",
+      "properties": [
+        {
+          "name": "spectra:qrs",
+          "value": "2"
+        },
+        {
+          "name": "spectra:risk-band",
+          "value": "SAFE"
+        },
+        {
+          "name": "spectra:effort",
+          "value": "EASY"
+        },
+        {
+          "name": "spectra:occurrences",
+          "value": "3"
+        },
+        {
+          "name": "spectra:family",
+          "value": "signature"
+        },
+        {
+          "name": "spectra:pqc-safe",
+          "value": "true"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "ML-KEM",
+      "description": "ML-KEM (FIPS 203 / Kyber)",
+      "properties": [
+        {
+          "name": "spectra:qrs",
+          "value": "2"
+        },
+        {
+          "name": "spectra:risk-band",
+          "value": "SAFE"
+        },
+        {
+          "name": "spectra:effort",
+          "value": "EASY"
+        },
+        {
+          "name": "spectra:occurrences",
+          "value": "97"
+        },
+        {
+          "name": "spectra:family",
+          "value": "asymmetric-encryption"
+        },
+        {
+          "name": "spectra:pqc-safe",
+          "value": "true"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "ML-KEM",
+      "version": "128",
+      "description": "ML-KEM (FIPS 203 / Kyber)",
+      "properties": [
+        {
+          "name": "spectra:qrs",
+          "value": "0"
+        },
+        {
+          "name": "spectra:risk-band",
+          "value": "SAFE"
+        },
+        {
+          "name": "spectra:effort",
+          "value": "EASY"
+        },
+        {
+          "name": "spectra:occurrences",
+          "value": "2"
+        },
+        {
+          "name": "spectra:family",
+          "value": "asymmetric-encryption"
+        },
+        {
+          "name": "spectra:pqc-safe",
+          "value": "true"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "ML-KEM",
+      "version": "256",
+      "description": "ML-KEM (FIPS 203 / Kyber)",
+      "properties": [
+        {
+          "name": "spectra:qrs",
+          "value": "0"
+        },
+        {
+          "name": "spectra:risk-band",
+          "value": "SAFE"
+        },
+        {
+          "name": "spectra:effort",
+          "value": "EASY"
+        },
+        {
+          "name": "spectra:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "spectra:family",
+          "value": "asymmetric-encryption"
+        },
+        {
+          "name": "spectra:pqc-safe",
+          "value": "true"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "ML-KEM",
+      "version": "512",
+      "description": "ML-KEM (FIPS 203 / Kyber)",
+      "properties": [
+        {
+          "name": "spectra:qrs",
+          "value": "0"
+        },
+        {
+          "name": "spectra:risk-band",
+          "value": "SAFE"
+        },
+        {
+          "name": "spectra:effort",
+          "value": "EASY"
+        },
+        {
+          "name": "spectra:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "spectra:family",
+          "value": "asymmetric-encryption"
+        },
+        {
+          "name": "spectra:pqc-safe",
+          "value": "true"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "ML-KEM",
+      "version": "1024",
+      "description": "ML-KEM (FIPS 203 / Kyber)",
+      "properties": [
+        {
+          "name": "spectra:qrs",
+          "value": "0"
+        },
+        {
+          "name": "spectra:risk-band",
+          "value": "SAFE"
+        },
+        {
+          "name": "spectra:effort",
+          "value": "EASY"
+        },
+        {
+          "name": "spectra:occurrences",
+          "value": "2"
+        },
+        {
+          "name": "spectra:family",
+          "value": "asymmetric-encryption"
+        },
+        {
+          "name": "spectra:pqc-safe",
+          "value": "true"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "RC2",
+      "description": "RC2 (Rivest Cipher 2)",
+      "properties": [
+        {
+          "name": "spectra:qrs",
+          "value": "82"
+        },
+        {
+          "name": "spectra:risk-band",
+          "value": "CRITICAL"
+        },
+        {
+          "name": "spectra:effort",
+          "value": "MEDIUM"
+        },
+        {
+          "name": "spectra:occurrences",
+          "value": "10"
+        },
+        {
+          "name": "spectra:family",
+          "value": "symmetric-encryption"
+        },
+        {
+          "name": "spectra:pqc-safe",
+          "value": "false"
+        },
+        {
+          "name": "spectra:cwe",
+          "value": "CWE-327"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "RC2",
+      "version": "256",
+      "description": "RC2 (Rivest Cipher 2)",
+      "properties": [
+        {
+          "name": "spectra:qrs",
+          "value": "80"
+        },
+        {
+          "name": "spectra:risk-band",
+          "value": "CRITICAL"
+        },
+        {
+          "name": "spectra:effort",
+          "value": "MEDIUM"
+        },
+        {
+          "name": "spectra:occurrences",
+          "value": "2"
+        },
+        {
+          "name": "spectra:family",
+          "value": "symmetric-encryption"
+        },
+        {
+          "name": "spectra:pqc-safe",
+          "value": "false"
+        },
+        {
+          "name": "spectra:cwe",
+          "value": "CWE-327"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "RC4",
+      "description": "RC4 (Rivest Cipher 4)",
+      "properties": [
+        {
+          "name": "spectra:qrs",
+          "value": "87"
+        },
+        {
+          "name": "spectra:risk-band",
+          "value": "CRITICAL"
+        },
+        {
+          "name": "spectra:effort",
+          "value": "MEDIUM"
+        },
+        {
+          "name": "spectra:occurrences",
+          "value": "47"
+        },
+        {
+          "name": "spectra:family",
+          "value": "stream-cipher"
+        },
+        {
+          "name": "spectra:pqc-safe",
+          "value": "false"
+        },
+        {
+          "name": "spectra:cwe",
+          "value": "CWE-327"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "RC4",
+      "version": "192",
+      "description": "RC4 (Rivest Cipher 4)",
+      "properties": [
+        {
+          "name": "spectra:qrs",
+          "value": "85"
+        },
+        {
+          "name": "spectra:risk-band",
+          "value": "CRITICAL"
+        },
+        {
+          "name": "spectra:effort",
+          "value": "MEDIUM"
+        },
+        {
+          "name": "spectra:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "spectra:family",
+          "value": "stream-cipher"
+        },
+        {
+          "name": "spectra:pqc-safe",
+          "value": "false"
+        },
+        {
+          "name": "spectra:cwe",
+          "value": "CWE-327"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "RC4",
+      "version": "256",
+      "description": "RC4 (Rivest Cipher 4)",
+      "properties": [
+        {
+          "name": "spectra:qrs",
+          "value": "87"
+        },
+        {
+          "name": "spectra:risk-band",
+          "value": "CRITICAL"
+        },
+        {
+          "name": "spectra:effort",
+          "value": "MEDIUM"
+        },
+        {
+          "name": "spectra:occurrences",
+          "value": "2"
+        },
+        {
+          "name": "spectra:family",
+          "value": "stream-cipher"
+        },
+        {
+          "name": "spectra:pqc-safe",
+          "value": "false"
+        },
+        {
+          "name": "spectra:cwe",
+          "value": "CWE-327"
+        }
+      ]
+    },
+    {
+      "type": "library",
       "name": "RSA",
       "description": "RSA (Rivest–Shamir–Adleman)",
       "properties": [
@@ -280,7 +1246,7 @@
         },
         {
           "name": "spectra:occurrences",
-          "value": "5"
+          "value": "143"
         },
         {
           "name": "spectra:family",
@@ -304,7 +1270,7 @@
       "properties": [
         {
           "name": "spectra:qrs",
-          "value": "90"
+          "value": "92"
         },
         {
           "name": "spectra:risk-band",
@@ -312,11 +1278,11 @@
         },
         {
           "name": "spectra:effort",
-          "value": "MEDIUM"
+          "value": "HARD"
         },
         {
           "name": "spectra:occurrences",
-          "value": "1"
+          "value": "12"
         },
         {
           "name": "spectra:family",
@@ -352,7 +1318,7 @@
         },
         {
           "name": "spectra:occurrences",
-          "value": "6"
+          "value": "14"
         },
         {
           "name": "spectra:family",
@@ -387,7 +1353,7 @@
         },
         {
           "name": "spectra:occurrences",
-          "value": "12"
+          "value": "516"
         },
         {
           "name": "spectra:family",
@@ -423,7 +1389,7 @@
         },
         {
           "name": "spectra:occurrences",
-          "value": "2"
+          "value": "10"
         },
         {
           "name": "spectra:family",
@@ -436,6 +1402,109 @@
         {
           "name": "spectra:cwe",
           "value": "CWE-328"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "SHA1",
+      "version": "521",
+      "description": "SHA-1",
+      "properties": [
+        {
+          "name": "spectra:qrs",
+          "value": "70"
+        },
+        {
+          "name": "spectra:risk-band",
+          "value": "HIGH"
+        },
+        {
+          "name": "spectra:effort",
+          "value": "EASY"
+        },
+        {
+          "name": "spectra:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "spectra:family",
+          "value": "hash"
+        },
+        {
+          "name": "spectra:pqc-safe",
+          "value": "false"
+        },
+        {
+          "name": "spectra:cwe",
+          "value": "CWE-328"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "SHA1",
+      "version": "1024",
+      "description": "SHA-1",
+      "properties": [
+        {
+          "name": "spectra:qrs",
+          "value": "70"
+        },
+        {
+          "name": "spectra:risk-band",
+          "value": "HIGH"
+        },
+        {
+          "name": "spectra:effort",
+          "value": "EASY"
+        },
+        {
+          "name": "spectra:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "spectra:family",
+          "value": "hash"
+        },
+        {
+          "name": "spectra:pqc-safe",
+          "value": "false"
+        },
+        {
+          "name": "spectra:cwe",
+          "value": "CWE-328"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "SLH-DSA",
+      "description": "SLH-DSA (FIPS 205 / SPHINCS+)",
+      "properties": [
+        {
+          "name": "spectra:qrs",
+          "value": "2"
+        },
+        {
+          "name": "spectra:risk-band",
+          "value": "SAFE"
+        },
+        {
+          "name": "spectra:effort",
+          "value": "EASY"
+        },
+        {
+          "name": "spectra:occurrences",
+          "value": "14"
+        },
+        {
+          "name": "spectra:family",
+          "value": "signature"
+        },
+        {
+          "name": "spectra:pqc-safe",
+          "value": "true"
         }
       ]
     }

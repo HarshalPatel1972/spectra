@@ -1,0 +1,180 @@
+{
+  "scan_root": "C:\\Users\\Harshal Patel\\Desktop\\spectra\\npm",
+  "started_at": "2026-05-31T18:29:50.9789549+05:30",
+  "completed_at": "2026-05-31T18:29:50.9894955+05:30",
+  "total_files": 4,
+  "scanned_files": 4,
+  "skipped_files": 0,
+  "findings": [
+    {
+      "id": "0d912fc5-ac8a-4327-b7bf-d423be863542",
+      "algorithm": "RSA",
+      "algorithm_info": {
+        "Name": "RSA",
+        "DisplayName": "RSA (Rivest–Shamir–Adleman)",
+        "Family": "asymmetric-encryption",
+        "QuantumThreat": "CRITICAL",
+        "BaseQRS": 90,
+        "PQCSafe": false,
+        "PQCReplacement": [
+          "ML-KEM (FIPS 203)"
+        ],
+        "CWE": "CWE-327"
+      },
+      "source": "CODE",
+      "file_path": "README.md",
+      "line_number": 87,
+      "line_content": "| **40-59** | MEDIUM | Acceptable for now, but not quantum-safe (RSA-2048) |",
+      "language": "",
+      "key_size": 1024,
+      "qrs": 90,
+      "risk_band": "CRITICAL",
+      "migration_effort": "HARD",
+      "effort_rationale": "asymmetric algorithm embedded in code; requires architectural changes",
+      "occurrence_count": 1,
+      "timestamp": "2026-05-31T18:29:50.9889861+05:30",
+      "introduced_at": "0001-01-01T00:00:00Z"
+    },
+    {
+      "id": "f60e9681-c274-4171-9d4d-1eceb38d0a1c",
+      "algorithm": "MD5",
+      "algorithm_info": {
+        "Name": "MD5",
+        "DisplayName": "MD5",
+        "Family": "hash",
+        "QuantumThreat": "HIGH",
+        "BaseQRS": 80,
+        "PQCSafe": false,
+        "PQCReplacement": [
+          "SHA-256"
+        ],
+        "CWE": "CWE-328"
+      },
+      "source": "CODE",
+      "file_path": "README.md",
+      "line_number": 85,
+      "line_content": "| **80-100** | CRITICAL | Broken algorithm (MD5) or highly vulnerable to Shor's algorithm |",
+      "language": "",
+      "key_size": 1024,
+      "qrs": 80,
+      "risk_band": "CRITICAL",
+      "migration_effort": "EASY",
+      "effort_rationale": "hash function swap; drop-in replacement available",
+      "occurrence_count": 1,
+      "timestamp": "2026-05-31T18:29:50.9889861+05:30",
+      "introduced_at": "0001-01-01T00:00:00Z"
+    },
+    {
+      "id": "5f53942e-af0c-43d2-9010-4a587715a92e",
+      "algorithm": "SHA1",
+      "algorithm_info": {
+        "Name": "SHA1",
+        "DisplayName": "SHA-1",
+        "Family": "hash",
+        "QuantumThreat": "HIGH",
+        "BaseQRS": 70,
+        "PQCSafe": false,
+        "PQCReplacement": [
+          "SHA-256",
+          "SHA-3"
+        ],
+        "CWE": "CWE-328"
+      },
+      "source": "CODE",
+      "file_path": "README.md",
+      "line_number": 86,
+      "line_content": "| **60-79** | HIGH | Weak algorithm (SHA1, RSA-1024) |",
+      "language": "",
+      "key_size": 1024,
+      "qrs": 70,
+      "risk_band": "HIGH",
+      "migration_effort": "EASY",
+      "effort_rationale": "hash function swap; drop-in replacement available",
+      "occurrence_count": 1,
+      "timestamp": "2026-05-31T18:29:50.9889861+05:30",
+      "introduced_at": "0001-01-01T00:00:00Z"
+    },
+    {
+      "id": "7044c880-428f-4d2d-9602-128a10e47159",
+      "algorithm": "ML-DSA",
+      "algorithm_info": {
+        "Name": "ML-DSA",
+        "DisplayName": "ML-DSA (FIPS 204 / Dilithium)",
+        "Family": "signature",
+        "QuantumThreat": "SAFE",
+        "BaseQRS": 0,
+        "PQCSafe": true,
+        "PQCReplacement": null,
+        "CWE": ""
+      },
+      "source": "CODE",
+      "file_path": "README.md",
+      "line_number": 89,
+      "line_content": "| **0-19** | SAFE | Post-Quantum Cryptography (ML-KEM, ML-DSA) |",
+      "language": "",
+      "key_size": 1024,
+      "qrs": 0,
+      "risk_band": "SAFE",
+      "migration_effort": "EASY",
+      "effort_rationale": "algorithm is already PQC-safe; no migration needed",
+      "occurrence_count": 1,
+      "timestamp": "2026-05-31T18:29:50.9889861+05:30",
+      "introduced_at": "0001-01-01T00:00:00Z"
+    }
+  ],
+  "aggregate_qrs": 81,
+  "findings_by_band": {
+    "CRITICAL": 2,
+    "HIGH": 1,
+    "SAFE": 1
+  },
+  "action_plan": [
+    {
+      "rank": 1,
+      "algorithm": "MD5",
+      "risk_band": "CRITICAL",
+      "occurrences": 1,
+      "effort": "EASY",
+      "priority_score": 82.77258872223979,
+      "recommendation": "Migrate to: SHA-256",
+      "replacement": [
+        "SHA-256"
+      ]
+    },
+    {
+      "rank": 2,
+      "algorithm": "SHA1",
+      "risk_band": "HIGH",
+      "occurrences": 1,
+      "effort": "EASY",
+      "priority_score": 72.42601513195982,
+      "recommendation": "Migrate to: SHA-256",
+      "replacement": [
+        "SHA-256",
+        "SHA-3"
+      ]
+    },
+    {
+      "rank": 3,
+      "algorithm": "RSA",
+      "risk_band": "CRITICAL",
+      "occurrences": 1,
+      "effort": "HARD",
+      "priority_score": 27.935748693755926,
+      "recommendation": "Migrate to: ML-KEM (FIPS 203)",
+      "replacement": [
+        "ML-KEM (FIPS 203)"
+      ]
+    },
+    {
+      "rank": 4,
+      "algorithm": "ML-DSA",
+      "risk_band": "SAFE",
+      "occurrences": 1,
+      "effort": "EASY",
+      "priority_score": 0,
+      "recommendation": "Algorithm is PQC-safe; no action required.",
+      "replacement": null
+    }
+  ]
+}
