@@ -1,0 +1,43 @@
+name: Bug Report
+description: Create a report to help us improve Spectra's CLI or output
+title: "[BUG] "
+labels: ["bug"]
+assignees: []
+
+body:
+  - type: markdown
+    attributes:
+      value: "Thanks for reporting a bug! (If this is about Spectra misidentifying an algorithm, use the False Positive/Negative templates instead)."
+  - type: textarea
+    id: description
+    attributes:
+      label: Description
+      description: A clear and concise description of what the bug is.
+      placeholder: When I run `spectra scan .`, the program panics...
+    validations:
+      required: true
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Steps To Reproduce
+      description: Steps to reproduce the behavior.
+      placeholder: |
+        1. Create a file containing...
+        2. Run `spectra scan ...`
+        3. See error
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: Spectra Version
+      description: Output of `spectra version`
+    validations:
+      required: true
+  - type: input
+    id: os
+    attributes:
+      label: OS and Architecture
+      description: e.g. macOS ARM64, Windows AMD64, Linux
+    validations:
+      required: true

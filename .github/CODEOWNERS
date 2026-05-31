@@ -1,0 +1,5 @@
+# These owners will be the default reviewers for pull requests in these areas.
+
+*       @HarshalPatel1972
+/docs/  @HarshalPatel1972
+/rules/ @HarshalPatel1972

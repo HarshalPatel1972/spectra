@@ -1,0 +1,35 @@
+name: False Positive Report
+description: Spectra flagged code that is NOT actually a vulnerable algorithm
+title: "[FP] "
+labels: ["false positive", "detection"]
+assignees: []
+
+body:
+  - type: markdown
+    attributes:
+      value: "Thanks for helping us refine Spectra's detection engine! A False Positive means Spectra flagged a line of code as an algorithm (like RSA or MD5), but it was actually something else (e.g., a variable name, a comment, or an unrelated string)."
+  - type: textarea
+    id: code_snippet
+    attributes:
+      label: Code Snippet
+      description: Please paste the exact code snippet that triggered the false positive.
+      placeholder: |
+        // This is what Spectra flagged:
+        func handleMessage(messageType int) { ... }
+    validations:
+      required: true
+  - type: input
+    id: language
+    attributes:
+      label: Language / File Type
+      description: e.g. Go, Python, Java, YAML
+    validations:
+      required: true
+  - type: textarea
+    id: output
+    attributes:
+      label: Spectra Output
+      description: What did Spectra report this as?
+      placeholder: "Flagged as CRITICAL RSA-2048 with QRS 90"
+    validations:
+      required: true
