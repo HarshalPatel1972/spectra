@@ -44,32 +44,26 @@ async function downloadAndExtract() {
 
   console.log(`Downloading Spectra from ${downloadUrl}...`);
   
-  // Download file logic
-  const file = fs.createWriteStream(archivePath);
-  https.get(downloadUrl, (response) => {
-    if (response.statusCode === 301 || response.statusCode === 302) {
-      https.get(response.headers.location, (res) => {
-        res.pipe(file);
-        file.on('finish', () => {
-          file.close(() => extractArchive(archivePath, binDir, ext));
-        });
-      });
-    } else if (response.statusCode !== 200) {
-      console.error(`Failed to download binary: HTTP ${response.statusCode}`);
-      // Don't fail the install if the release isn't published yet
-      console.log('Skipping binary download. Ensure you build it manually or release it on GitHub.');
-      fs.unlinkSync(archivePath);
-      process.exit(0);
-    } else {
-      response.pipe(file);
-      file.on('finish', () => {
-        file.close(() => extractArchive(archivePath, binDir, ext));
-      });
-    }
-  }).on('error', (err) => {
-    console.error(`Download error: ${err.message}`);
+  try {
+    const axios = require('axios');
+    const response = await axios({
+      method: 'GET',
+      url: downloadUrl,
+      responseType: 'stream'
+    });
+    
+    const file = fs.createWriteStream(archivePath);
+    response.data.pipe(file);
+    
+    file.on('finish', () => {
+      file.close(() => extractArchive(archivePath, binDir, ext));
+    });
+  } catch (err) {
+    console.error(`Failed to download binary: ${err.message}`);
+    console.log('Skipping binary download. Ensure you build it manually or release it on GitHub.');
+    if (fs.existsSync(archivePath)) fs.unlinkSync(archivePath);
     process.exit(0);
-  });
+  }
 }
 
 function extractArchive(archivePath, destDir, ext) {
