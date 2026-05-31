@@ -1,0 +1,85 @@
+name: 'Spectra Scan'
+description: 'Run Spectra cryptographic discovery and risk intelligence in your CI/CD pipeline'
+author: 'Harshal Patel'
+
+branding:
+  icon: 'shield'
+  color: 'blue'
+
+inputs:
+  target:
+    description: 'Target directory to scan'
+    required: false
+    default: '.'
+  fail-on:
+    description: 'Severity level that causes the action to fail (e.g., critical, high, medium, low)'
+    required: false
+    default: 'critical'
+  output-dir:
+    description: 'Directory to store CBOM and JSON reports'
+    required: false
+    default: 'spectra-out'
+  version:
+    description: 'Version of Spectra to run'
+    required: false
+    default: 'latest'
+
+runs:
+  using: 'composite'
+  steps:
+    - name: Get OS and Arch
+      id: os-arch
+      shell: bash
+      run: |
+        OS=$(uname -s | tr '[:upper:]' '[:lower:]')
+        if [ "$OS" = "darwin" ]; then OS="Darwin"; fi
+        if [ "$OS" = "linux" ]; then OS="Linux"; fi
+        if [ "$OS" = "mingw"* ] || [ "$OS" = "msys"* ]; then OS="Windows"; fi
+        
+        ARCH=$(uname -m)
+        if [ "$ARCH" = "x86_64" ]; then ARCH="x86_64"; fi
+        if [ "$ARCH" = "aarch64" ] || [ "$ARCH" = "arm64" ]; then ARCH="arm64"; fi
+        
+        EXT="tar.gz"
+        if [ "$OS" = "Windows" ]; then EXT="zip"; fi
+        
+        echo "os=$OS" >> $GITHUB_OUTPUT
+        echo "arch=$ARCH" >> $GITHUB_OUTPUT
+        echo "ext=$EXT" >> $GITHUB_OUTPUT
+
+    - name: Download Spectra Binary
+      shell: bash
+      run: |
+        if [ "${{ inputs.version }}" = "latest" ]; then
+          URL="https://github.com/HarshalPatel1972/spectra/releases/latest/download/spectra_${{ steps.os-arch.outputs.os }}_${{ steps.os-arch.outputs.arch }}.${{ steps.os-arch.outputs.ext }}"
+        else
+          URL="https://github.com/HarshalPatel1972/spectra/releases/download/${{ inputs.version }}/spectra_${{ steps.os-arch.outputs.os }}_${{ steps.os-arch.outputs.arch }}.${{ steps.os-arch.outputs.ext }}"
+        fi
+        
+        echo "Downloading from $URL"
+        curl -sL $URL -o spectra-archive.${{ steps.os-arch.outputs.ext }}
+        
+        if [ "${{ steps.os-arch.outputs.ext }}" = "zip" ]; then
+          unzip -q spectra-archive.zip
+        else
+          tar -xzf spectra-archive.tar.gz
+        fi
+        
+        mkdir -p $GITHUB_WORKSPACE/.spectra-bin
+        mv spectra* $GITHUB_WORKSPACE/.spectra-bin/
+        chmod +x $GITHUB_WORKSPACE/.spectra-bin/spectra*
+
+    - name: Run Spectra Scan
+      shell: bash
+      run: |
+        export PATH="$GITHUB_WORKSPACE/.spectra-bin:$PATH"
+        mkdir -p ${{ inputs.output-dir }}
+        spectra scan ${{ inputs.target }} --fail-on=${{ inputs.fail-on }} --output=terminal,cbom,json --out-dir=${{ inputs.output-dir }}
+
+    - name: Upload CBOM Artifact
+      uses: actions/upload-artifact@v4
+      if: always()
+      with:
+        name: spectra-cbom
+        path: ${{ inputs.output-dir }}/spectra-cbom.json
+        retention-days: 14

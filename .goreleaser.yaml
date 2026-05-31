@@ -1,0 +1,62 @@
+version: 2
+
+project_name: spectra
+
+before:
+  hooks:
+    - go mod tidy
+    - npm --prefix web install
+    - npm --prefix web run build
+
+builds:
+  - id: spectra-build
+    env:
+      - CGO_ENABLED=0
+    goos:
+      - linux
+      - windows
+      - darwin
+    goarch:
+      - amd64
+      - arm64
+    main: ./cmd/spectra
+    binary: spectra
+    ldflags:
+      - -s -w -X github.com/HarshalPatel1972/spectra/internal/version.Version={{.Version}}
+
+archives:
+  - id: spectra-archive
+    name_template: >-
+      {{ .ProjectName }}_
+      {{- title .Os }}_
+      {{- if eq .Arch "amd64" }}x86_64
+      {{- else if eq .Arch "386" }}i386
+      {{- else }}{{ .Arch }}{{ end }}
+      {{- if .Arm }}v{{ .Arm }}{{ end }}
+    format_overrides:
+      - goos: windows
+        format: zip
+
+checksum:
+  name_template: 'checksums.txt'
+
+snapshot:
+  name_template: "{{ incpatch .Version }}-next"
+
+changelog:
+  sort: asc
+  filters:
+    exclude:
+      - '^docs:'
+      - '^test:'
+
+brews:
+  - repository:
+      owner: HarshalPatel1972
+      name: homebrew-tap
+      token: "{{ .Env.HOMEBREW_TAP_GITHUB_TOKEN }}"
+    directory: Formula
+    homepage: "https://github.com/HarshalPatel1972/spectra"
+    description: "Cryptographic Asset Discovery & Quantum Risk Intelligence CLI"
+    test: |
+      system "#{bin}/spectra version"
