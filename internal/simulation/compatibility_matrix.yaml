@@ -1,0 +1,40 @@
+substitutions:
+  "RSA -> ML-KEM":
+    key_establishment: true
+    digital_signature: false
+    certificate_pubkey: true
+    tls_key_exchange: true
+    jwt_signing: false
+    ssh_host_key: false
+
+  "RSA -> ML-DSA":
+    key_establishment: false
+    digital_signature: true
+    certificate_pubkey: true
+    jwt_signing: false
+    code_signing: true
+
+  "ECDSA -> ML-DSA":
+    digital_signature: true
+    certificate_pubkey: true
+    jwt_signing: false
+    code_signing: true
+    tls_certificate: true
+
+  "ECDH -> ML-KEM":
+    key_establishment: true
+    tls_key_exchange: true
+
+  "SHA1 -> SHA256":
+    hmac: true
+    certificate_signature: true
+    checksum: true
+    pbkdf: true
+
+  "MD5 -> SHA256":
+    hmac: true
+    checksum: true
+    password_hash: false
+
+  "AES128 -> AES256":
+    all_contexts: true
