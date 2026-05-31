@@ -4,7 +4,6 @@ import (
 	"errors"
 	"fmt"
 	"os"
-	"path/filepath"
 	"strings"
 
 	"github.com/HarshalPatel1972/spectra/internal/cbom"
@@ -12,6 +11,7 @@ import (
 	"github.com/HarshalPatel1972/spectra/internal/detector"
 	"github.com/HarshalPatel1972/spectra/internal/report"
 	"github.com/HarshalPatel1972/spectra/internal/scanner"
+	"github.com/HarshalPatel1972/spectra/rules"
 	"github.com/spf13/cobra"
 )
 
@@ -112,13 +112,7 @@ func runScan(cmd *cobra.Command, args []string) error {
 		}
 	}
 
-	// Load pattern rules from file path
-	yamlPath := "rules/crypto_patterns.yaml"
-	if _, err := os.Stat(yamlPath); os.IsNotExist(err) {
-		// Fallback for when running from a different directory
-		yamlPath = filepath.Join("..", "..", "rules", "crypto_patterns.yaml")
-	}
-	registry, err := detector.LoadPatterns(yamlPath)
+	registry, err := detector.LoadPatternsFromBytes(rules.CryptoPatternsYAML)
 	if err != nil {
 		return fmt.Errorf("failed to load patterns: %w", err)
 	}

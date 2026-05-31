@@ -1,6 +1,6 @@
 [
   {
-    "id": "c6aed01a-cc10-4056-bc6e-f89fdcbd7790",
+    "id": "b2c202da-80a3-4d9e-8100-f8c93f2b6ca1",
     "algorithm": "ECDSA",
     "algorithm_info": {
       "Name": "ECDSA",
@@ -28,7 +28,7 @@
     "introduced_at": "0001-01-01T00:00:00Z"
   },
   {
-    "id": "2e28630e-718d-4ac8-a38e-c1f275618c31",
+    "id": "4231cae3-eb1f-4d7d-a817-fc53d5989501",
     "algorithm": "RSA",
     "algorithm_info": {
       "Name": "RSA",
@@ -56,7 +56,7 @@
     "introduced_at": "0001-01-01T00:00:00Z"
   },
   {
-    "id": "da7a113a-c3b1-4be9-8a3d-4961d982a4dc",
+    "id": "52c2166f-0d00-49da-8c5e-29cea9b6dff3",
     "algorithm": "SHA1",
     "algorithm_info": {
       "Name": "SHA1",
@@ -85,7 +85,7 @@
     "introduced_at": "0001-01-01T00:00:00Z"
   },
   {
-    "id": "34dcfa44-22a1-444e-826f-ed9fc940b63c",
+    "id": "68d9122e-ca52-44b0-be7e-5ab6d2232f3c",
     "algorithm": "RSA",
     "algorithm_info": {
       "Name": "RSA",
@@ -114,7 +114,7 @@
     "introduced_at": "0001-01-01T00:00:00Z"
   },
   {
-    "id": "64c35814-96d3-4249-8d48-d7b087c9d789",
+    "id": "a98d97d2-7af4-4dde-b754-592382470b87",
     "algorithm": "RSA",
     "algorithm_info": {
       "Name": "RSA",
@@ -143,7 +143,7 @@
     "introduced_at": "0001-01-01T00:00:00Z"
   },
   {
-    "id": "7557da13-4e81-4c2a-864b-caa38bfa9241",
+    "id": "df44fa7a-0ed1-406b-888d-737793524c10",
     "algorithm": "RSA",
     "algorithm_info": {
       "Name": "RSA",
@@ -172,7 +172,7 @@
     "introduced_at": "0001-01-01T00:00:00Z"
   },
   {
-    "id": "77b8d73f-5ab4-4587-a367-393991dbaca1",
+    "id": "7ef77205-2d7d-47d3-a0f8-b102ff8e6b7a",
     "algorithm": "SHA1",
     "algorithm_info": {
       "Name": "SHA1",
@@ -201,7 +201,7 @@
     "introduced_at": "0001-01-01T00:00:00Z"
   },
   {
-    "id": "adbd1c47-11c1-4a1b-b45f-ca0d26a1abc1",
+    "id": "1873eafa-c780-45e2-8854-4dadb6365085",
     "algorithm": "SHA1",
     "algorithm_info": {
       "Name": "SHA1",
@@ -230,7 +230,7 @@
     "introduced_at": "0001-01-01T00:00:00Z"
   },
   {
-    "id": "332becac-c48c-4652-b5f6-155407293dd6",
+    "id": "3c194556-71e4-481b-a1cb-2a6b58c762ee",
     "algorithm": "ECDSA",
     "algorithm_info": {
       "Name": "ECDSA",
@@ -254,41 +254,12 @@
     "risk_band": "",
     "migration_effort": "",
     "effort_rationale": "",
-    "occurrence_count": 3,
+    "occurrence_count": 4,
     "timestamp": "0001-01-01T00:00:00Z",
     "introduced_at": "0001-01-01T00:00:00Z"
   },
   {
-    "id": "f3fbdf74-3008-47bc-84b5-ecff801b78d3",
-    "algorithm": "DSA",
-    "algorithm_info": {
-      "Name": "DSA",
-      "DisplayName": "DSA (Digital Signature Algorithm)",
-      "Family": "signature",
-      "QuantumThreat": "CRITICAL",
-      "BaseQRS": 90,
-      "PQCSafe": false,
-      "PQCReplacement": [
-        "ML-DSA (FIPS 204)"
-      ],
-      "CWE": "CWE-327"
-    },
-    "source": "CODE",
-    "file_path": "sample_go.go",
-    "line_number": 38,
-    "line_content": "key, err := ecdsa.GenerateKey(elliptic.P256(), rand.Reader)",
-    "language": "go",
-    "key_size": 256,
-    "qrs": 0,
-    "risk_band": "",
-    "migration_effort": "",
-    "effort_rationale": "",
-    "occurrence_count": 1,
-    "timestamp": "0001-01-01T00:00:00Z",
-    "introduced_at": "0001-01-01T00:00:00Z"
-  },
-  {
-    "id": "1f1cf7b8-98ec-4e08-a4a8-827de5d1a44f",
+    "id": "c53c259d-a6aa-4321-997b-a9db8c4cfa36",
     "algorithm": "ECDSA",
     "algorithm_info": {
       "Name": "ECDSA",
@@ -316,7 +287,7 @@
     "introduced_at": "0001-01-01T00:00:00Z"
   },
   {
-    "id": "0ce58524-c5da-4cb3-991a-fae2a6f05dc6",
+    "id": "3921a751-9c53-47da-a148-36b01c1e68c7",
     "algorithm": "AES128",
     "algorithm_info": {
       "Name": "AES128",
@@ -345,7 +316,7 @@
     "introduced_at": "0001-01-01T00:00:00Z"
   },
   {
-    "id": "1ab9111e-c08e-45cc-9981-f63ea3b881fc",
+    "id": "08224cef-1c5f-4b12-81b4-fe49b94a28b3",
     "algorithm": "RSA",
     "algorithm_info": {
       "Name": "RSA",
@@ -373,7 +344,7 @@
     "introduced_at": "0001-01-01T00:00:00Z"
   },
   {
-    "id": "80750d9c-a4be-4a25-9dc0-fc86f8a5f8ca",
+    "id": "2f9225d9-46a9-4337-9101-910a6b1e7d1f",
     "algorithm": "RSA",
     "algorithm_info": {
       "Name": "RSA",
@@ -402,7 +373,7 @@
     "introduced_at": "0001-01-01T00:00:00Z"
   },
   {
-    "id": "a7ab0da5-eeca-4b86-8b3d-05759f97e350",
+    "id": "34ec3396-0e06-4734-8c2e-f717e7a35944",
     "algorithm": "DES",
     "algorithm_info": {
       "Name": "DES",
@@ -430,7 +401,7 @@
     "introduced_at": "0001-01-01T00:00:00Z"
   },
   {
-    "id": "24af48e7-541d-46ac-a2d8-655711f82fc7",
+    "id": "9cf4da05-b2d0-45e8-b50e-b37a15ea44f4",
     "algorithm": "DES",
     "algorithm_info": {
       "Name": "DES",
@@ -458,7 +429,7 @@
     "introduced_at": "0001-01-01T00:00:00Z"
   },
   {
-    "id": "1b840e1f-af0a-40d0-9084-7badc0afd193",
+    "id": "2c8f13cf-9318-43c8-ab87-40445f6f0467",
     "algorithm": "MD5",
     "algorithm_info": {
       "Name": "MD5",
@@ -486,7 +457,7 @@
     "introduced_at": "0001-01-01T00:00:00Z"
   },
   {
-    "id": "9267eb33-5bdf-4ea3-aeda-23b2ed658a7d",
+    "id": "315870ab-7e17-4c80-8909-808518115ccf",
     "algorithm": "MD5",
     "algorithm_info": {
       "Name": "MD5",
@@ -514,7 +485,7 @@
     "introduced_at": "0001-01-01T00:00:00Z"
   },
   {
-    "id": "e316b51d-5b9e-418e-b9d6-32c10b91293c",
+    "id": "542f805f-365d-4354-a6bb-462890511052",
     "algorithm": "SHA1",
     "algorithm_info": {
       "Name": "SHA1",
@@ -543,7 +514,7 @@
     "introduced_at": "0001-01-01T00:00:00Z"
   },
   {
-    "id": "694a0fec-08ed-4605-b37d-cdab6d5a1125",
+    "id": "679d9aa6-310a-44a4-8590-e08dc32516e8",
     "algorithm": "SHA1",
     "algorithm_info": {
       "Name": "SHA1",
@@ -572,7 +543,7 @@
     "introduced_at": "0001-01-01T00:00:00Z"
   },
   {
-    "id": "a4c8771a-b6eb-46da-99a4-b16ad1184e94",
+    "id": "1de43989-9af8-4c56-901b-86974e866af0",
     "algorithm": "MD5",
     "algorithm_info": {
       "Name": "MD5",
@@ -600,7 +571,7 @@
     "introduced_at": "0001-01-01T00:00:00Z"
   },
   {
-    "id": "6023a93f-57a1-4e83-9d58-b9affccc1651",
+    "id": "fe8681e3-3752-4abf-8829-954e53442587",
     "algorithm": "SHA1",
     "algorithm_info": {
       "Name": "SHA1",
@@ -629,7 +600,7 @@
     "introduced_at": "0001-01-01T00:00:00Z"
   },
   {
-    "id": "65ec9bc7-419c-4f1f-8e07-4414064d88a1",
+    "id": "6d8718f5-b0e2-4423-961d-1da455d1474d",
     "algorithm": "SHA1",
     "algorithm_info": {
       "Name": "SHA1",
@@ -658,7 +629,7 @@
     "introduced_at": "0001-01-01T00:00:00Z"
   },
   {
-    "id": "2a531a42-7367-4f7c-81e2-3fef676d2af2",
+    "id": "a6a8fd54-5676-425a-9bb5-86f9ef79027f",
     "algorithm": "SHA1",
     "algorithm_info": {
       "Name": "SHA1",
@@ -687,7 +658,7 @@
     "introduced_at": "0001-01-01T00:00:00Z"
   },
   {
-    "id": "a5859ab1-043f-43dc-9ba4-427a229dc1df",
+    "id": "feb808c2-e64b-4b62-9dd6-2fb22e5227ad",
     "algorithm": "SHA1",
     "algorithm_info": {
       "Name": "SHA1",
@@ -716,7 +687,7 @@
     "introduced_at": "0001-01-01T00:00:00Z"
   },
   {
-    "id": "9982a5e2-d78a-41f6-a1bc-9e71507ac273",
+    "id": "1b8100af-619e-4bbc-b672-68eca8b39a50",
     "algorithm": "MD5",
     "algorithm_info": {
       "Name": "MD5",
@@ -744,7 +715,7 @@
     "introduced_at": "0001-01-01T00:00:00Z"
   },
   {
-    "id": "075162c0-1558-4581-9622-8610193a64d4",
+    "id": "51108334-0e73-40d5-8541-e56768bead46",
     "algorithm": "MD5",
     "algorithm_info": {
       "Name": "MD5",
@@ -772,7 +743,7 @@
     "introduced_at": "0001-01-01T00:00:00Z"
   },
   {
-    "id": "2f86c399-4706-4010-9c01-ada94aea3a0f",
+    "id": "1be73da8-f64f-44b4-9d96-151b5bf760da",
     "algorithm": "MD5",
     "algorithm_info": {
       "Name": "MD5",
@@ -800,7 +771,7 @@
     "introduced_at": "0001-01-01T00:00:00Z"
   },
   {
-    "id": "19bc338f-8280-47e9-b3ec-d3f01d769f6b",
+    "id": "2ce21d88-65a3-4b0e-9cda-13b12e7a6803",
     "algorithm": "RSA",
     "algorithm_info": {
       "Name": "RSA",
@@ -828,7 +799,7 @@
     "introduced_at": "0001-01-01T00:00:00Z"
   },
   {
-    "id": "592ef1cb-a45e-44f1-99bd-680692056a2f",
+    "id": "041b7528-83b4-4515-a52e-ee6399c2e237",
     "algorithm": "ECDSA",
     "algorithm_info": {
       "Name": "ECDSA",
@@ -856,7 +827,7 @@
     "introduced_at": "0001-01-01T00:00:00Z"
   },
   {
-    "id": "5271964f-08f1-44dd-9db8-deed5f9a51bf",
+    "id": "e3a8c35b-ea52-42ae-abc6-b384e50b0952",
     "algorithm": "ECDSA",
     "algorithm_info": {
       "Name": "ECDSA",
@@ -884,7 +855,7 @@
     "introduced_at": "0001-01-01T00:00:00Z"
   },
   {
-    "id": "d3ca02b5-2170-4e37-abf6-b6fe5ac1c268",
+    "id": "958ac91d-34d0-4f40-a6c7-06b8a20e2beb",
     "algorithm": "SHA1",
     "algorithm_info": {
       "Name": "SHA1",
@@ -914,7 +885,7 @@
     "introduced_at": "0001-01-01T00:00:00Z"
   },
   {
-    "id": "7382a3ed-ac4c-4330-9939-bc64d5b575f8",
+    "id": "3e5f792e-3363-48b2-9581-45c17386cc5b",
     "algorithm": "MD5",
     "algorithm_info": {
       "Name": "MD5",
@@ -943,7 +914,7 @@
     "introduced_at": "0001-01-01T00:00:00Z"
   },
   {
-    "id": "41c98ee1-9be7-4540-8356-9313326237af",
+    "id": "2da70d75-7393-46a8-a05c-1aadb5b4c047",
     "algorithm": "RSA",
     "algorithm_info": {
       "Name": "RSA",
@@ -971,7 +942,7 @@
     "introduced_at": "0001-01-01T00:00:00Z"
   },
   {
-    "id": "2ad2ab5b-fdca-4f0c-b2db-6a2495944cb6",
+    "id": "fe8cec66-ef6c-4ff3-ae17-3c0e99e73841",
     "algorithm": "RSA",
     "algorithm_info": {
       "Name": "RSA",
@@ -999,7 +970,7 @@
     "introduced_at": "0001-01-01T00:00:00Z"
   },
   {
-    "id": "60f7b0a0-371f-4a2d-807b-a1ce85ce35d8",
+    "id": "a2cb38e5-0fb8-4129-b1c5-53cb5335a803",
     "algorithm": "RSA",
     "algorithm_info": {
       "Name": "RSA",
@@ -1028,7 +999,7 @@
     "introduced_at": "0001-01-01T00:00:00Z"
   },
   {
-    "id": "7c09f5f1-8a69-4b6a-9a6e-1a7af4aeefe3",
+    "id": "11c27912-50ae-4f79-844e-b3a2bb153f20",
     "algorithm": "RSA",
     "algorithm_info": {
       "Name": "RSA",
@@ -1057,7 +1028,7 @@
     "introduced_at": "0001-01-01T00:00:00Z"
   },
   {
-    "id": "c154e8c8-9e99-4502-9c29-e7b63910dc7b",
+    "id": "2ec9aad1-7b95-431f-acb1-fa2468a7b5f5",
     "algorithm": "MD5",
     "algorithm_info": {
       "Name": "MD5",
@@ -1085,7 +1056,7 @@
     "introduced_at": "0001-01-01T00:00:00Z"
   },
   {
-    "id": "5a0ed2d1-8410-40b0-bbb2-a69b50a3cf94",
+    "id": "f94d9927-49d0-4e23-a696-9aa919facb70",
     "algorithm": "SHA1",
     "algorithm_info": {
       "Name": "SHA1",
@@ -1114,7 +1085,7 @@
     "introduced_at": "0001-01-01T00:00:00Z"
   },
   {
-    "id": "631dde28-badd-4615-9340-c68696690a44",
+    "id": "b47024dc-86a3-4d84-aa47-3c1dfef18591",
     "algorithm": "SHA1",
     "algorithm_info": {
       "Name": "SHA1",
@@ -1143,7 +1114,7 @@
     "introduced_at": "0001-01-01T00:00:00Z"
   },
   {
-    "id": "2856f3ba-cbd6-45ba-b0e5-0a3a83ef7139",
+    "id": "7c7dd4cb-3e3a-4fbb-9948-ed2d1e949de1",
     "algorithm": "MD5",
     "algorithm_info": {
       "Name": "MD5",
@@ -1172,7 +1143,7 @@
     "introduced_at": "0001-01-01T00:00:00Z"
   },
   {
-    "id": "3e16a2c8-ca30-4302-8e0d-f1da47e55bba",
+    "id": "122af6ba-1785-4a81-b78b-832a0f6998ce",
     "algorithm": "SHA1",
     "algorithm_info": {
       "Name": "SHA1",
