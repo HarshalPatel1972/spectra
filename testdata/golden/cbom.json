@@ -1,0 +1,52 @@
+{
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "serialNumber": "urn:uuid:00000000-0000-0000-0000-000000000000",
+  "version": 1,
+  "metadata": {
+    "timestamp": "2026-05-30T21:08:10Z",
+    "tools": {
+      "components": [
+        {
+          "type": "application",
+          "name": "spectra",
+          "version": "1.0.0"
+        }
+      ]
+    }
+  },
+  "components": [
+    {
+      "type": "library",
+      "name": "RSA",
+      "version": "2048",
+      "description": "RSA",
+      "properties": [
+        {
+          "name": "spectra:qrs",
+          "value": "50"
+        },
+        {
+          "name": "spectra:risk-band",
+          "value": ""
+        },
+        {
+          "name": "spectra:effort",
+          "value": "MEDIUM"
+        },
+        {
+          "name": "spectra:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "spectra:family",
+          "value": ""
+        },
+        {
+          "name": "spectra:pqc-safe",
+          "value": "false"
+        }
+      ]
+    }
+  ]
+}
