@@ -1,0 +1,443 @@
+{
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "serialNumber": "urn:uuid:0700305a-f139-47d6-a357-9aec7d5c281e",
+  "version": 1,
+  "metadata": {
+    "timestamp": "2026-05-30T19:48:11Z",
+    "tools": {
+      "components": [
+        {
+          "type": "application",
+          "name": "spectra",
+          "version": "v0.1.0"
+        }
+      ]
+    }
+  },
+  "components": [
+    {
+      "type": "library",
+      "name": "AES128",
+      "version": "128",
+      "description": "AES-128",
+      "properties": [
+        {
+          "name": "spectra:qrs",
+          "value": "27"
+        },
+        {
+          "name": "spectra:risk-band",
+          "value": "LOW"
+        },
+        {
+          "name": "spectra:effort",
+          "value": "EASY"
+        },
+        {
+          "name": "spectra:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "spectra:family",
+          "value": "symmetric-encryption"
+        },
+        {
+          "name": "spectra:pqc-safe",
+          "value": "false"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "DES",
+      "description": "DES (Data Encryption Standard)",
+      "properties": [
+        {
+          "name": "spectra:qrs",
+          "value": "85"
+        },
+        {
+          "name": "spectra:risk-band",
+          "value": "CRITICAL"
+        },
+        {
+          "name": "spectra:effort",
+          "value": "MEDIUM"
+        },
+        {
+          "name": "spectra:occurrences",
+          "value": "2"
+        },
+        {
+          "name": "spectra:family",
+          "value": "symmetric-encryption"
+        },
+        {
+          "name": "spectra:pqc-safe",
+          "value": "false"
+        },
+        {
+          "name": "spectra:cwe",
+          "value": "CWE-327"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "DSA",
+      "version": "256",
+      "description": "DSA (Digital Signature Algorithm)",
+      "properties": [
+        {
+          "name": "spectra:qrs",
+          "value": "90"
+        },
+        {
+          "name": "spectra:risk-band",
+          "value": "CRITICAL"
+        },
+        {
+          "name": "spectra:effort",
+          "value": "HARD"
+        },
+        {
+          "name": "spectra:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "spectra:family",
+          "value": "signature"
+        },
+        {
+          "name": "spectra:pqc-safe",
+          "value": "false"
+        },
+        {
+          "name": "spectra:cwe",
+          "value": "CWE-327"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "ECDSA",
+      "description": "ECDSA (Elliptic Curve Digital Signature Algorithm)",
+      "properties": [
+        {
+          "name": "spectra:qrs",
+          "value": "92"
+        },
+        {
+          "name": "spectra:risk-band",
+          "value": "CRITICAL"
+        },
+        {
+          "name": "spectra:effort",
+          "value": "HARD"
+        },
+        {
+          "name": "spectra:occurrences",
+          "value": "4"
+        },
+        {
+          "name": "spectra:family",
+          "value": "signature"
+        },
+        {
+          "name": "spectra:pqc-safe",
+          "value": "false"
+        },
+        {
+          "name": "spectra:cwe",
+          "value": "CWE-327"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "ECDSA",
+      "version": "256",
+      "description": "ECDSA (Elliptic Curve Digital Signature Algorithm)",
+      "properties": [
+        {
+          "name": "spectra:qrs",
+          "value": "92"
+        },
+        {
+          "name": "spectra:risk-band",
+          "value": "CRITICAL"
+        },
+        {
+          "name": "spectra:effort",
+          "value": "HARD"
+        },
+        {
+          "name": "spectra:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "spectra:family",
+          "value": "signature"
+        },
+        {
+          "name": "spectra:pqc-safe",
+          "value": "false"
+        },
+        {
+          "name": "spectra:cwe",
+          "value": "CWE-327"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "MD5",
+      "description": "MD5",
+      "properties": [
+        {
+          "name": "spectra:qrs",
+          "value": "82"
+        },
+        {
+          "name": "spectra:risk-band",
+          "value": "CRITICAL"
+        },
+        {
+          "name": "spectra:effort",
+          "value": "EASY"
+        },
+        {
+          "name": "spectra:occurrences",
+          "value": "7"
+        },
+        {
+          "name": "spectra:family",
+          "value": "hash"
+        },
+        {
+          "name": "spectra:pqc-safe",
+          "value": "false"
+        },
+        {
+          "name": "spectra:cwe",
+          "value": "CWE-328"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "MD5",
+      "version": "256",
+      "description": "MD5",
+      "properties": [
+        {
+          "name": "spectra:qrs",
+          "value": "80"
+        },
+        {
+          "name": "spectra:risk-band",
+          "value": "CRITICAL"
+        },
+        {
+          "name": "spectra:effort",
+          "value": "EASY"
+        },
+        {
+          "name": "spectra:occurrences",
+          "value": "2"
+        },
+        {
+          "name": "spectra:family",
+          "value": "hash"
+        },
+        {
+          "name": "spectra:pqc-safe",
+          "value": "false"
+        },
+        {
+          "name": "spectra:cwe",
+          "value": "CWE-328"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "RSA",
+      "description": "RSA (Rivest–Shamir–Adleman)",
+      "properties": [
+        {
+          "name": "spectra:qrs",
+          "value": "92"
+        },
+        {
+          "name": "spectra:risk-band",
+          "value": "CRITICAL"
+        },
+        {
+          "name": "spectra:effort",
+          "value": "HARD"
+        },
+        {
+          "name": "spectra:occurrences",
+          "value": "5"
+        },
+        {
+          "name": "spectra:family",
+          "value": "asymmetric-encryption"
+        },
+        {
+          "name": "spectra:pqc-safe",
+          "value": "false"
+        },
+        {
+          "name": "spectra:cwe",
+          "value": "CWE-327"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "RSA",
+      "version": "1024",
+      "description": "RSA (Rivest–Shamir–Adleman)",
+      "properties": [
+        {
+          "name": "spectra:qrs",
+          "value": "90"
+        },
+        {
+          "name": "spectra:risk-band",
+          "value": "CRITICAL"
+        },
+        {
+          "name": "spectra:effort",
+          "value": "MEDIUM"
+        },
+        {
+          "name": "spectra:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "spectra:family",
+          "value": "asymmetric-encryption"
+        },
+        {
+          "name": "spectra:pqc-safe",
+          "value": "false"
+        },
+        {
+          "name": "spectra:cwe",
+          "value": "CWE-327"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "RSA",
+      "version": "2048",
+      "description": "RSA (Rivest–Shamir–Adleman)",
+      "properties": [
+        {
+          "name": "spectra:qrs",
+          "value": "92"
+        },
+        {
+          "name": "spectra:risk-band",
+          "value": "CRITICAL"
+        },
+        {
+          "name": "spectra:effort",
+          "value": "HARD"
+        },
+        {
+          "name": "spectra:occurrences",
+          "value": "6"
+        },
+        {
+          "name": "spectra:family",
+          "value": "asymmetric-encryption"
+        },
+        {
+          "name": "spectra:pqc-safe",
+          "value": "false"
+        },
+        {
+          "name": "spectra:cwe",
+          "value": "CWE-327"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "SHA1",
+      "description": "SHA-1",
+      "properties": [
+        {
+          "name": "spectra:qrs",
+          "value": "72"
+        },
+        {
+          "name": "spectra:risk-band",
+          "value": "HIGH"
+        },
+        {
+          "name": "spectra:effort",
+          "value": "EASY"
+        },
+        {
+          "name": "spectra:occurrences",
+          "value": "12"
+        },
+        {
+          "name": "spectra:family",
+          "value": "hash"
+        },
+        {
+          "name": "spectra:pqc-safe",
+          "value": "false"
+        },
+        {
+          "name": "spectra:cwe",
+          "value": "CWE-328"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "SHA1",
+      "version": "256",
+      "description": "SHA-1",
+      "properties": [
+        {
+          "name": "spectra:qrs",
+          "value": "70"
+        },
+        {
+          "name": "spectra:risk-band",
+          "value": "HIGH"
+        },
+        {
+          "name": "spectra:effort",
+          "value": "EASY"
+        },
+        {
+          "name": "spectra:occurrences",
+          "value": "2"
+        },
+        {
+          "name": "spectra:family",
+          "value": "hash"
+        },
+        {
+          "name": "spectra:pqc-safe",
+          "value": "false"
+        },
+        {
+          "name": "spectra:cwe",
+          "value": "CWE-328"
+        }
+      ]
+    }
+  ]
+}
