@@ -5,29 +5,6 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![CycloneDX 1.7](https://img.shields.io/badge/CycloneDX-1.7-blue)](https://cyclonedx.org)
 
-**Cryptographic Asset Discovery & Quantum Risk Intelligence CLI**
-
-> "See every cipher. Own your migration."
-
-Spectra is a production-grade command-line tool that scans codebases, X.509 certificates, configuration files, and dependency manifests to discover every cryptographic algorithm in use, score each finding against quantum-computing threat models, and generate a Cryptographic Bill of Materials (CBOM) in the CycloneDX format.
-
-## Architecture
-
-```text
-[Input: Repo, Image, TLS URL] 
- └── Orchestrator
-      ├── Code Scanner
-      ├── Cert Scanner
-      ├── Deps Scanner
-      └── Config Scanner
-           └── Detector Engine
-                └── QRS & Priority Scoring
-                     ├── Terminal Report
-                     ├── JSON Output
-                     ├── CBOM Generator
-                     └── Web Dashboard
-```
-
 ## Quick Start
 
 ### Install via NPM

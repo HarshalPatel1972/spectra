@@ -1,36 +1,59 @@
 # Spectra GitHub Action
 
-[![Build Status](https://github.com/HarshalPatel1972/spectra/actions/workflows/ci.yml/badge.svg)](https://github.com/HarshalPatel1972/spectra/actions)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-The official GitHub Action for [Spectra](https://github.com/HarshalPatel1972/spectra).
+**Run Spectra Cryptographic Intelligence Platform directly in your CI/CD pipelines.**
 
-Run blazing-fast Cryptographic Asset Discovery & Post-Quantum Risk Intelligence scans directly in your CI/CD pipelines. It automatically generates a CycloneDX CBOM (Cryptographic Bill of Materials) and outputs risk reports.
+This GitHub Action wraps the Spectra CLI, allowing you to automatically scan your repository for cryptographic assets, evaluate Quantum Risk Scores (QRS), enforce compliance (CNSA 2.0, NIST), and generate CBOMs on every Pull Request.
 
-## Usage
+## Quick Start
 
-Add this step to your GitHub Actions workflow:
+Add the following step to your `.github/workflows/` YAML file:
 
 ```yaml
-steps:
-  - uses: actions/checkout@v4
+name: Cryptographic Audit
+on: [push, pull_request]
 
-  - name: Run Spectra Crypto Scanner
-    uses: HarshalPatel1972/spectra-action@main
-    with:
-      target: '.'            # Optional: Directory to scan (default: '.')
-      format: 'json'         # Optional: Output format: terminal, json, both (default: 'terminal')
-      qrs_threshold: '40'    # Optional: Fail build if QRS exceeds this (default: '0' = don't fail)
+jobs:
+  spectra-scan:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # Required for Git Blame temporal tracking
+
+      - name: Run Spectra Scan
+        uses: HarshalPatel1972/spectra-action@main
+        with:
+          fail-on-critical: 'true'
+          generate-cbom: 'true'
 ```
 
 ## Inputs
 
 | Input | Description | Default |
 | --- | --- | --- |
-| `target` | Directory to scan for cryptographic assets | `.` |
-| `format` | Output format (`terminal`, `json`, `both`) | `terminal` |
-| `qrs_threshold` | Fail build if the aggregate QRS score is strictly greater than this value (0-100). | `0` |
+| `scan-path` | Directory to scan | `.` |
+| `fail-on-critical` | Fail the build if CRITICAL findings are detected | `false` |
+| `generate-cbom` | Generate a CycloneDX CBOM | `true` |
+| `output-format` | Output format (`terminal`, `json`, `cbom`) | `terminal` |
 
-## Outputs
+## Artifacts
 
-The action will automatically drop a `spectra-report.json` and `cbom.json` in the root of your workspace if you enable JSON format, which can be uploaded as workflow artifacts.
+If you enable CBOM generation or HTML reporting, you can upload them as build artifacts:
+
+```yaml
+      - name: Upload CBOM Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: spectra-cbom
+          path: spectra-cbom.json
+```
+
+## Phase 2 Capabilities Supported
+
+This action natively supports all Spectra Phase 2 capabilities:
+- **Temporal Tracking**: Git blame is extracted automatically (ensure you use `fetch-depth: 0` in checkout).
+- **Compliance Rules**: Evaluates against built-in rulesets.
+- **Dependency & Config Scanning**: Deep scanning across manifests and infra-as-code files.

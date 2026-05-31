@@ -1,0 +1,8 @@
+- id: spectra-scan
+  name: Spectra Quantum Crypto Scanner
+  description: Fail commit if new CRITICAL quantum-vulnerable cryptography is introduced
+  entry: spectra scan
+  args: [--fail-on=critical, --quiet, --no-progress]
+  language: system
+  pass_filenames: false
+  always_run: false

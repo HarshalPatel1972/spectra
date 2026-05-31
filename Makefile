@@ -15,6 +15,10 @@ LDFLAGS := -ldflags "\
 build:
 	go build $(LDFLAGS) -o bin/spectra ./cmd/spectra
 
+## wasm: Compile the spectra WebAssembly module
+wasm:
+	GOOS=js GOARCH=wasm go build -o bin/spectra.wasm ./cmd/spectra-wasm
+
 ## test: Run all tests with race detector
 test:
 	go test ./... -race -count=1

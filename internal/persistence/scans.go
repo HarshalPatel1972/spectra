@@ -56,3 +56,27 @@ FROM scans WHERE id = ?
 		AggregateQRS: aggQRS,
 	}, nil
 }
+
+// GetLatestScan retrieves the most recent ScanResult from the scans table.
+func (s *Store) GetLatestScan() (*scanner.ScanResult, error) {
+	query := `
+SELECT scan_root, total_files, scanned_files, aggregate_qrs
+FROM scans ORDER BY started_at DESC LIMIT 1
+`
+	var root string
+	var total, scanned, aggQRS int
+
+	err := s.db.QueryRow(query).Scan(&root, &total, &scanned, &aggQRS)
+	if err == sql.ErrNoRows {
+		return nil, fmt.Errorf("no scans found")
+	} else if err != nil {
+		return nil, fmt.Errorf("querying latest scan: %w", err)
+	}
+
+	return &scanner.ScanResult{
+		ScanRoot:     root,
+		TotalFiles:   total,
+		ScannedFiles: scanned,
+		AggregateQRS: aggQRS,
+	}, nil
+}
