@@ -1,0 +1,372 @@
+# Spectra – Cryptographic Pattern Rules (§6.1)
+# Format: Algorithm -> Language -> [regex patterns]
+# "generic" language patterns are applied to all files regardless of extension.
+
+RSA:
+  go:
+    - 'rsa\.GenerateKey'
+    - 'rsa\.EncryptPKCS1v15'
+    - 'rsa\.DecryptPKCS1v15'
+    - 'rsa\.SignPKCS1v15'
+    - 'rsa\.EncryptOAEP'
+    - 'rsa\.DecryptOAEP'
+    - 'rsa\.SignPSS'
+    - 'crypto/rsa'
+    - 'x509\.RSA'
+  python:
+    - 'RSA\.generate'
+    - 'RSA\.import_key'
+    - 'PKCS1_OAEP\.new'
+    - 'PKCS1_v1_5\.new'
+    - 'from\s+Crypto\.PublicKey\s+import\s+RSA'
+    - 'from\s+cryptography.*import\s+rsa'
+    - 'rsa\.generate_private_key'
+    - 'rsa\.RSAPrivateKey'
+  java:
+    - 'KeyPairGenerator\.getInstance\(\s*"RSA"'
+    - 'Cipher\.getInstance\(\s*"RSA'
+    - 'KeyFactory\.getInstance\(\s*"RSA"'
+    - 'Signature\.getInstance\(\s*".*RSA'
+    - 'java\.security\.interfaces\.RSA'
+  javascript:
+    - 'crypto\.generateKeyPairSync\(\s*[''"]rsa[''"]'
+    - 'crypto\.createSign\(\s*[''"]RSA'
+    - 'algorithm:\s*[''"]RSA'
+    - 'subtle\.generateKey\(.*RSA'
+  csharp:
+    - 'RSACryptoServiceProvider'
+    - 'RSA\.Create'
+    - 'RSACng'
+    - 'RSAOpenSsl'
+  rust:
+    - 'rsa::RsaPrivateKey'
+    - 'rsa::RsaPublicKey'
+    - 'use\s+rsa::'
+  generic:
+    - '(?i)\bRSA[_-]?\d{3,4}\b'
+    - '(?i)\bRSA\s+key\b'
+
+ECDSA:
+  go:
+    - 'ecdsa\.GenerateKey'
+    - 'ecdsa\.Sign'
+    - 'ecdsa\.Verify'
+    - 'crypto/ecdsa'
+    - 'elliptic\.P256'
+    - 'elliptic\.P384'
+    - 'elliptic\.P521'
+  python:
+    - 'ec\.generate_private_key'
+    - 'ec\.ECDSA'
+    - 'ec\.SECP256R1'
+    - 'ec\.SECP384R1'
+    - 'from\s+cryptography.*import\s+ec'
+    - 'ECDSA\.new'
+  java:
+    - 'KeyPairGenerator\.getInstance\(\s*"EC"'
+    - 'Signature\.getInstance\(\s*".*ECDSA'
+    - 'ECGenParameterSpec'
+    - 'java\.security\.interfaces\.EC'
+  javascript:
+    - 'algorithm:\s*[''"]ECDSA[''"]'
+    - 'namedCurve:\s*[''"]P-256[''"]'
+    - 'namedCurve:\s*[''"]P-384[''"]'
+    - 'subtle\.generateKey\(.*ECDSA'
+  csharp:
+    - 'ECDsaCng'
+    - 'ECDsa\.Create'
+    - 'ECDsaOpenSsl'
+  rust:
+    - 'ecdsa::SigningKey'
+    - 'use\s+ecdsa::'
+    - 'p256::ecdsa'
+  generic:
+    - '(?i)\bECDSA\b'
+    - '(?i)\bEC-DSA\b'
+
+SHA1:
+  go:
+    - 'sha1\.New'
+    - 'sha1\.Sum'
+    - 'crypto/sha1'
+    - 'crypto\.SHA1'
+  python:
+    - 'hashlib\.sha1'
+    - 'hashlib\.new\(\s*[''"]sha1[''"]'
+    - 'SHA1\.new'
+    - 'from\s+Crypto\.Hash\s+import\s+SHA1'
+  java:
+    - 'MessageDigest\.getInstance\(\s*"SHA-?1"'
+    - 'DigestUtils\.sha1'
+    - 'Signature\.getInstance\(\s*"SHA1with'
+  javascript:
+    - 'crypto\.createHash\(\s*[''"]sha1[''"]'
+    - 'algorithm:\s*[''"]SHA-1[''"]'
+  csharp:
+    - 'SHA1\.Create'
+    - 'SHA1CryptoServiceProvider'
+    - 'SHA1Managed'
+  rust:
+    - 'sha1::Sha1'
+    - 'use\s+sha1::'
+  generic:
+    - '(?i)\bSHA-?1\b'
+
+MD5:
+  go:
+    - 'md5\.New'
+    - 'md5\.Sum'
+    - 'crypto/md5'
+    - 'crypto\.MD5'
+  python:
+    - 'hashlib\.md5'
+    - 'hashlib\.new\(\s*[''"]md5[''"]'
+    - 'MD5\.new'
+    - 'from\s+Crypto\.Hash\s+import\s+MD5'
+  java:
+    - 'MessageDigest\.getInstance\(\s*"MD5"'
+    - 'DigestUtils\.md5'
+  javascript:
+    - 'crypto\.createHash\(\s*[''"]md5[''"]'
+  csharp:
+    - 'MD5\.Create'
+    - 'MD5CryptoServiceProvider'
+  rust:
+    - 'md5::compute'
+    - 'md5::Md5'
+    - 'use\s+md5::'
+  generic:
+    - '(?i)\bMD-?5\b'
+
+DES:
+  go:
+    - 'des\.NewCipher'
+    - 'des\.NewTripleDESCipher'
+    - 'crypto/des'
+  python:
+    - 'DES\.new'
+    - 'DES3\.new'
+    - 'from\s+Crypto\.Cipher\s+import\s+DES'
+    - 'algorithms\.TripleDES'
+  java:
+    - 'Cipher\.getInstance\(\s*"DES'
+    - 'Cipher\.getInstance\(\s*"DESede'
+    - 'SecretKeyFactory\.getInstance\(\s*"DES'
+    - 'DESedeKeySpec'
+  javascript:
+    - 'crypto\.createCipheriv\(\s*[''"]des'
+    - 'algorithm:\s*[''"]DES[''"]'
+  csharp:
+    - 'DESCryptoServiceProvider'
+    - 'TripleDESCryptoServiceProvider'
+    - 'TripleDES\.Create'
+  rust:
+    - 'des::Des'
+    - 'des::TdesEde3'
+    - 'use\s+des::'
+  generic:
+    - '(?i)\bDES\b'
+    - '(?i)\b3DES\b'
+    - '(?i)\bDESede\b'
+    - '(?i)\bTriple[_-]?DES\b'
+
+RC4:
+  go:
+    - 'rc4\.NewCipher'
+    - 'crypto/rc4'
+  python:
+    - 'ARC4\.new'
+    - 'from\s+Crypto\.Cipher\s+import\s+ARC4'
+  java:
+    - 'Cipher\.getInstance\(\s*"RC4"'
+    - 'Cipher\.getInstance\(\s*"ARCFOUR"'
+  javascript:
+    - 'crypto\.createCipheriv\(\s*[''"]rc4[''"]'
+  csharp:
+    - 'RC4'
+  rust:
+    - 'rc4::Rc4'
+  generic:
+    - '(?i)\bRC-?4\b'
+    - '(?i)\bARCFOUR\b'
+    - '(?i)\bARC4\b'
+
+DH:
+  go:
+    - 'dh\.GenerateParameters'
+    - 'crypto/dh'
+    - 'DHParameters'
+  python:
+    - 'dh\.generate_parameters'
+    - 'dh\.DHParameterNumbers'
+    - 'from\s+cryptography.*import\s+dh'
+    - 'generate_dh_parameters'
+  java:
+    - 'KeyPairGenerator\.getInstance\(\s*"DH"'
+    - 'KeyAgreement\.getInstance\(\s*"DiffieHellman"'
+    - 'DHParameterSpec'
+    - 'javax\.crypto\.interfaces\.DHPublicKey'
+  javascript:
+    - 'crypto\.createDiffieHellman'
+    - 'crypto\.getDiffieHellman'
+  csharp:
+    - 'ECDiffieHellman'
+    - 'ECDiffieHellmanCng'
+  rust:
+    - 'x25519_dalek'
+    - 'diffie_hellman'
+  generic:
+    - '(?i)\bDiffie[_-]?Hellman\b'
+    - '(?i)\bDH\s+key\b'
+    - '(?i)\bDH\s+param'
+
+AES128:
+  go:
+    - 'aes\.NewCipher.*16\s*\)'
+    - 'make\(\[\]byte,\s*16\).*aes'
+  python:
+    - 'AES\.new\(.*16'
+    - 'algorithms\.AES\(\s*.*\b16\b'
+    - 'key_size\s*=\s*128'
+  java:
+    - 'SecretKeySpec\(.*128'
+    - 'KeyGenerator\.getInstance\(\s*"AES".*128'
+    - 'AES/.*128'
+  javascript:
+    - 'algorithm:\s*[''"]AES-CBC[''"].*128'
+    - 'algorithm:\s*[''"]AES-GCM[''"].*128'
+    - 'length:\s*128'
+  csharp:
+    - 'Aes\.Create.*KeySize\s*=\s*128'
+    - 'AesCryptoServiceProvider.*128'
+  generic:
+    - '(?i)\bAES[_-]?128\b'
+    - '(?i)\bAES\b.*\b128[_-]?bit'
+
+ML-KEM:
+  go:
+    - 'mlkem\.GenerateKey'
+    - 'mlkem\.Encapsulate'
+    - 'mlkem\.Decapsulate'
+    - 'crypto/mlkem'
+  python:
+    - 'kyber'
+    - 'ml_kem'
+    - 'from\s+pqcrypto.*import.*kem'
+  java:
+    - 'KyberParameterSpec'
+    - 'KEMParameterSpec.*ML-KEM'
+  rust:
+    - 'pqcrypto::kem::kyber'
+    - 'ml_kem::'
+  generic:
+    - '(?i)\bML[_-]?KEM\b'
+    - '(?i)\bKyber\b'
+    - '(?i)\bFIPS[_-]?203\b'
+
+ML-DSA:
+  go:
+    - 'mldsa\.GenerateKey'
+    - 'mldsa\.Sign'
+    - 'mldsa\.Verify'
+  python:
+    - 'dilithium'
+    - 'ml_dsa'
+    - 'from\s+pqcrypto.*import.*sign'
+  java:
+    - 'DilithiumParameterSpec'
+    - 'Signature\.getInstance\(\s*"ML-DSA'
+  rust:
+    - 'pqcrypto::sign::dilithium'
+    - 'ml_dsa::'
+  generic:
+    - '(?i)\bML[_-]?DSA\b'
+    - '(?i)\bDilithium\b'
+    - '(?i)\bFIPS[_-]?204\b'
+
+SLH-DSA:
+  go:
+    - 'slhdsa\.'
+  python:
+    - 'sphincs'
+    - 'slh_dsa'
+  java:
+    - 'SPHINCSPlusParameterSpec'
+    - 'Signature\.getInstance\(\s*"SLH-DSA'
+  rust:
+    - 'pqcrypto::sign::sphincs'
+    - 'slh_dsa::'
+  generic:
+    - '(?i)\bSLH[_-]?DSA\b'
+    - '(?i)\bSPHINCS\+?\b'
+    - '(?i)\bFIPS[_-]?205\b'
+
+3DES:
+  go:
+    - 'des\.NewTripleDESCipher'
+  python:
+    - 'DES3\.new'
+    - 'algorithms\.TripleDES'
+  java:
+    - 'Cipher\.getInstance\(\s*"DESede'
+    - 'DESedeKeySpec'
+  csharp:
+    - 'TripleDESCryptoServiceProvider'
+    - 'TripleDES\.Create'
+  generic:
+    - '(?i)\b3DES\b'
+    - '(?i)\bTriple[_-]?DES\b'
+    - '(?i)\bDESede\b'
+
+RC2:
+  java:
+    - 'Cipher\.getInstance\(\s*"RC2"'
+  python:
+    - 'ARC2\.new'
+  generic:
+    - '(?i)\bRC-?2\b'
+
+ECDH:
+  go:
+    - 'ecdh\.GenerateKey'
+    - 'ecdh\.P256'
+    - 'ecdh\.P384'
+    - 'crypto/ecdh'
+  python:
+    - 'ec\.ECDH'
+    - 'derive.*ECDH'
+  java:
+    - 'KeyAgreement\.getInstance\(\s*"ECDH"'
+    - 'KeyPairGenerator\.getInstance\(\s*"EC".*ECDH'
+  javascript:
+    - 'algorithm:\s*[''"]ECDH[''"]'
+    - 'subtle\.deriveKey\(.*ECDH'
+  generic:
+    - '(?i)\bECDH\b'
+    - '(?i)\bEC-DH\b'
+
+DSA:
+  go:
+    - 'dsa\.GenerateKey'
+    - 'dsa\.Sign'
+    - 'dsa\.Verify'
+    - 'crypto/dsa'
+  python:
+    - 'dsa\.generate_private_key'
+    - 'from\s+cryptography.*import\s+dsa'
+  java:
+    - 'KeyPairGenerator\.getInstance\(\s*"DSA"'
+    - 'Signature\.getInstance\(\s*".*DSA"'
+  generic:
+    - '(?i)\bDSA\b'
+
+ElGamal:
+  java:
+    - 'ElGamalEngine'
+    - 'ElGamalParameterSpec'
+  python:
+    - 'ElGamal\.generate'
+    - 'from\s+Crypto\.PublicKey\s+import\s+ElGamal'
+  generic:
+    - '(?i)\bElGamal\b'
+    - '(?i)\bEl[_-]?Gamal\b'
