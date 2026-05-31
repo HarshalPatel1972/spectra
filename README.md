@@ -1,7 +1,7 @@
 # Spectra
 
-[![Go Report Card](https://goreportcard.com/badge/github.com/HarshalPatel1972/spectra)](https://goreportcard.com/report/github.com/HarshalPatel1972/spectra)
-[![Go Version](https://img.shields.io/github/go-mod/go-version/HarshalPatel1972/spectra)](https://github.com/HarshalPatel1972/spectra)
+[![Build Status](https://github.com/HarshalPatel1972/spectra/actions/workflows/ci.yml/badge.svg)](https://github.com/HarshalPatel1972/spectra/actions)
+[![Go Version](https://img.shields.io/badge/Go-1.25-blue.svg)](https://go.dev/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![CycloneDX 1.7](https://img.shields.io/badge/CycloneDX-1.7-blue)](https://cyclonedx.org)
 
@@ -13,23 +13,19 @@ Spectra is a production-grade command-line tool that scans codebases, X.509 cert
 
 ## Architecture
 
-```mermaid
-graph TD
-    A[Input: Repo, Image, TLS URL] --> B[Orchestrator]
-    B --> C{Scanners}
-    C --> D[Code Scanner]
-    C --> E[Cert Scanner]
-    C --> F[Deps Scanner]
-    C --> G[Config Scanner]
-    D --> H[Detector Engine]
-    E --> H
-    F --> H
-    G --> H
-    H --> I[QRS & Priority Scoring]
-    I --> J[Terminal Report]
-    I --> K[JSON Output]
-    I --> L[CBOM Generator]
-    I --> M[Web Dashboard]
+```text
+[Input: Repo, Image, TLS URL] 
+ └── Orchestrator
+      ├── Code Scanner
+      ├── Cert Scanner
+      ├── Deps Scanner
+      └── Config Scanner
+           └── Detector Engine
+                └── QRS & Priority Scoring
+                     ├── Terminal Report
+                     ├── JSON Output
+                     ├── CBOM Generator
+                     └── Web Dashboard
 ```
 
 ## Quick Start

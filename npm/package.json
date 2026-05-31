@@ -1,6 +1,6 @@
 {
   "name": "spectra-crypto-cli",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Cryptographic Asset Discovery & Quantum Risk Intelligence CLI",
   "main": "index.js",
   "bin": {
