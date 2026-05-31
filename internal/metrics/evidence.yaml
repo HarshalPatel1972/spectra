@@ -1,0 +1,13 @@
+evidence:
+  "RSA":
+    - url: "https://csrc.nist.gov/publications/detail/sp/800-131a/rev-2/final"
+      title: "NIST SP 800-131A Rev 2"
+      description: "Transitioning the Use of Cryptographic Algorithms and Key Lengths."
+    - url: "https://www.nsa.gov/Press-Room/News-Highlights/Article/Article/3148990/nsa-releases-future-quantum-resistant-qr-algorithm-requirements-for-national-se/"
+      title: "CNSA 2.0"
+      description: "Commercial National Security Algorithm Suite 2.0 requires transition to quantum-resistant public-key cryptography."
+  
+  "ECDH":
+    - url: "https://csrc.nist.gov/projects/post-quantum-cryptography"
+      title: "NIST Post-Quantum Cryptography"
+      description: "ECDH is vulnerable to Shor's algorithm and must be replaced by ML-KEM."
