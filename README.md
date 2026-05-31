@@ -13,19 +13,23 @@ Spectra is a production-grade command-line tool that scans codebases, X.509 cert
 
 ## Architecture
 
-```text
-[Input: Repo, Image, TLS URL] 
- └── Orchestrator
-      ├── Code Scanner
-      ├── Cert Scanner
-      ├── Deps Scanner
-      └── Config Scanner
-           └── Detector Engine
-                └── QRS & Priority Scoring
-                     ├── Terminal Report
-                     ├── JSON Output
-                     ├── CBOM Generator
-                     └── Web Dashboard
+```mermaid
+graph TD
+    A[Input: Repo, Image, TLS URL] --> B[Orchestrator]
+    B --> C{Scanners}
+    C --> D[Code Scanner]
+    C --> E[Cert Scanner]
+    C --> F[Deps Scanner]
+    C --> G[Config Scanner]
+    D --> H[Detector Engine]
+    E --> H
+    F --> H
+    G --> H
+    H --> I[QRS & Priority Scoring]
+    I --> J[Terminal Report]
+    I --> K[JSON Output]
+    I --> L[CBOM Generator]
+    I --> M[Web Dashboard]
 ```
 
 ## Quick Start
