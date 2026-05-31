@@ -1,7 +1,7 @@
 {
   "name": "spectra-crypto-cli",
-  "version": "1.0.4",
-  "description": "Cryptographic Asset Discovery & Quantum Risk Intelligence CLI",
+  "version": "2.0.0",
+  "description": "Cryptographic Intelligence Platform & PQC Migration Engine CLI",
   "main": "index.js",
   "bin": {
     "spectra": "index.js"
