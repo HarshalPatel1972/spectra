@@ -48,3 +48,11 @@ func TestScanCertFiles(t *testing.T) {
 		t.Error("Did not find expected SHA1 signature finding in sample_weak.pem")
 	}
 }
+
+// Dummy function to test Spectra VS Code Extension highlights
+func dummyVulnerableCryptoCode() {
+	// These specific API calls will be caught by Spectra's regex engines!
+	_ = "rsa.GenerateKey"
+	_ = "sha1.New"
+	_ = "crypto/md5"
+}

@@ -1,0 +1,1033 @@
+{
+  "scan_root": "c:\\Users\\Harshal Patel\\Desktop\\spectra\\internal\\scanner",
+  "started_at": "2026-06-01T23:12:29.0982015+05:30",
+  "completed_at": "2026-06-01T23:12:29.1134561+05:30",
+  "total_files": 12,
+  "scanned_files": 12,
+  "skipped_files": 0,
+  "findings": [
+    {
+      "id": "48563c60-95fa-4a3d-8f03-7b63a58036a1",
+      "algorithm": "ECDSA",
+      "algorithm_info": {
+        "Name": "ECDSA",
+        "DisplayName": "ECDSA (Elliptic Curve Digital Signature Algorithm)",
+        "Family": "signature",
+        "QuantumThreat": "CRITICAL",
+        "BaseQRS": 90,
+        "PQCSafe": false,
+        "PQCReplacement": [
+          "ML-DSA (FIPS 204)"
+        ],
+        "CWE": "CWE-327"
+      },
+      "source": "CODE",
+      "file_path": "cert.go",
+      "line_number": 36,
+      "line_content": "x509.ECDSAWithSHA1:   \"ECDSA+SHA1\",",
+      "language": "go",
+      "qrs": 92,
+      "risk_band": "CRITICAL",
+      "migration_effort": "HARD",
+      "effort_rationale": "signature algorithm embedded in code; requires protocol updates",
+      "occurrence_count": 4,
+      "timestamp": "2026-06-01T23:12:29.1134561+05:30",
+      "introduced_at": "0001-01-01T00:00:00Z"
+    },
+    {
+      "id": "b97fbdad-e0da-4100-9c27-6c138af14845",
+      "algorithm": "DSA",
+      "algorithm_info": {
+        "Name": "DSA",
+        "DisplayName": "DSA (Digital Signature Algorithm)",
+        "Family": "signature",
+        "QuantumThreat": "CRITICAL",
+        "BaseQRS": 90,
+        "PQCSafe": false,
+        "PQCReplacement": [
+          "ML-DSA (FIPS 204)"
+        ],
+        "CWE": "CWE-327"
+      },
+      "source": "CODE",
+      "file_path": "cert.go",
+      "line_number": 40,
+      "line_content": "x509.DSAWithSHA1:     \"DSA+SHA1\",",
+      "language": "go",
+      "qrs": 92,
+      "risk_band": "CRITICAL",
+      "migration_effort": "HARD",
+      "effort_rationale": "signature algorithm embedded in code; requires protocol updates",
+      "occurrence_count": 2,
+      "timestamp": "2026-06-01T23:12:29.1134561+05:30",
+      "introduced_at": "0001-01-01T00:00:00Z"
+    },
+    {
+      "id": "f54c3c88-3ee6-44e2-aa96-8e2e7dd6a659",
+      "algorithm": "ECDSA",
+      "algorithm_info": {
+        "Name": "ECDSA",
+        "DisplayName": "ECDSA (Elliptic Curve Digital Signature Algorithm)",
+        "Family": "signature",
+        "QuantumThreat": "CRITICAL",
+        "BaseQRS": 90,
+        "PQCSafe": false,
+        "PQCReplacement": [
+          "ML-DSA (FIPS 204)"
+        ],
+        "CWE": "CWE-327"
+      },
+      "source": "CODE",
+      "file_path": "cert.go",
+      "line_number": 49,
+      "line_content": "case x509.ECDSA:",
+      "language": "go",
+      "qrs": 92,
+      "risk_band": "CRITICAL",
+      "migration_effort": "HARD",
+      "effort_rationale": "signature algorithm embedded in code; requires protocol updates",
+      "occurrence_count": 2,
+      "timestamp": "2026-06-01T23:12:29.1134561+05:30",
+      "introduced_at": "0001-01-01T00:00:00Z"
+    },
+    {
+      "id": "1c055188-9cac-4d01-8a32-7fdf63181602",
+      "algorithm": "DSA",
+      "algorithm_info": {
+        "Name": "DSA",
+        "DisplayName": "DSA (Digital Signature Algorithm)",
+        "Family": "signature",
+        "QuantumThreat": "CRITICAL",
+        "BaseQRS": 90,
+        "PQCSafe": false,
+        "PQCReplacement": [
+          "ML-DSA (FIPS 204)"
+        ],
+        "CWE": "CWE-327"
+      },
+      "source": "CODE",
+      "file_path": "cert.go",
+      "line_number": 51,
+      "line_content": "case x509.DSA:",
+      "language": "go",
+      "qrs": 92,
+      "risk_band": "CRITICAL",
+      "migration_effort": "HARD",
+      "effort_rationale": "signature algorithm embedded in code; requires protocol updates",
+      "occurrence_count": 2,
+      "timestamp": "2026-06-01T23:12:29.1134561+05:30",
+      "introduced_at": "0001-01-01T00:00:00Z"
+    },
+    {
+      "id": "d1c7cecd-eb5b-4798-9620-22bda1f0974a",
+      "algorithm": "ECDSA",
+      "algorithm_info": {
+        "Name": "ECDSA",
+        "DisplayName": "ECDSA (Elliptic Curve Digital Signature Algorithm)",
+        "Family": "signature",
+        "QuantumThreat": "CRITICAL",
+        "BaseQRS": 90,
+        "PQCSafe": false,
+        "PQCReplacement": [
+          "ML-DSA (FIPS 204)"
+        ],
+        "CWE": "CWE-327"
+      },
+      "source": "CODE",
+      "file_path": "deps.go",
+      "line_number": 25,
+      "line_content": "\"github.com/square/go-jose\":     {Algorithms: []string{\"RSA\", \"ECDSA\"}, Risk: \"HIGH\"},",
+      "language": "go",
+      "qrs": 92,
+      "risk_band": "CRITICAL",
+      "migration_effort": "HARD",
+      "effort_rationale": "signature algorithm embedded in code; requires protocol updates",
+      "occurrence_count": 2,
+      "timestamp": "2026-06-01T23:12:29.1134561+05:30",
+      "introduced_at": "0001-01-01T00:00:00Z"
+    },
+    {
+      "id": "3ff816f0-29f9-4d5a-ab82-362a675c797d",
+      "algorithm": "ECDSA",
+      "algorithm_info": {
+        "Name": "ECDSA",
+        "DisplayName": "ECDSA (Elliptic Curve Digital Signature Algorithm)",
+        "Family": "signature",
+        "QuantumThreat": "CRITICAL",
+        "BaseQRS": 90,
+        "PQCSafe": false,
+        "PQCReplacement": [
+          "ML-DSA (FIPS 204)"
+        ],
+        "CWE": "CWE-327"
+      },
+      "source": "CODE",
+      "file_path": "deps.go",
+      "line_number": 40,
+      "line_content": "\"pyOpenSSL\":    {Algorithms: []string{\"RSA\", \"ECDSA\"}, Risk: \"HIGH\"},",
+      "language": "go",
+      "qrs": 92,
+      "risk_band": "CRITICAL",
+      "migration_effort": "HARD",
+      "effort_rationale": "signature algorithm embedded in code; requires protocol updates",
+      "occurrence_count": 2,
+      "timestamp": "2026-06-01T23:12:29.1134561+05:30",
+      "introduced_at": "0001-01-01T00:00:00Z"
+    },
+    {
+      "id": "fe08b5d6-3341-45b8-86f6-267b190bab26",
+      "algorithm": "ECDSA",
+      "algorithm_info": {
+        "Name": "ECDSA",
+        "DisplayName": "ECDSA (Elliptic Curve Digital Signature Algorithm)",
+        "Family": "signature",
+        "QuantumThreat": "CRITICAL",
+        "BaseQRS": 90,
+        "PQCSafe": false,
+        "PQCReplacement": [
+          "ML-DSA (FIPS 204)"
+        ],
+        "CWE": "CWE-327"
+      },
+      "source": "CODE",
+      "file_path": "deps.go",
+      "line_number": 47,
+      "line_content": "\"bcpkix-jdk15on\":  {Algorithms: []string{\"RSA\", \"ECDSA\"}, Risk: \"HIGH\"},",
+      "language": "go",
+      "qrs": 92,
+      "risk_band": "CRITICAL",
+      "migration_effort": "HARD",
+      "effort_rationale": "signature algorithm embedded in code; requires protocol updates",
+      "occurrence_count": 3,
+      "timestamp": "2026-06-01T23:12:29.1134561+05:30",
+      "introduced_at": "0001-01-01T00:00:00Z"
+    },
+    {
+      "id": "7a0414bf-be10-4250-94f8-017a89f4bf03",
+      "algorithm": "ECDH",
+      "algorithm_info": {
+        "Name": "ECDH",
+        "DisplayName": "ECDH (Elliptic Curve Diffie–Hellman)",
+        "Family": "key-agreement",
+        "QuantumThreat": "CRITICAL",
+        "BaseQRS": 90,
+        "PQCSafe": false,
+        "PQCReplacement": [
+          "ML-KEM (FIPS 203)"
+        ],
+        "CWE": "CWE-327"
+      },
+      "source": "CODE",
+      "file_path": "deps.go",
+      "line_number": 54,
+      "line_content": "\"p256\": {Algorithms: []string{\"ECDSA\", \"ECDH\"}, Risk: \"HIGH\"},",
+      "language": "go",
+      "qrs": 92,
+      "risk_band": "CRITICAL",
+      "migration_effort": "HARD",
+      "effort_rationale": "asymmetric algorithm embedded in code; requires architectural changes",
+      "occurrence_count": 3,
+      "timestamp": "2026-06-01T23:12:29.1134561+05:30",
+      "introduced_at": "0001-01-01T00:00:00Z"
+    },
+    {
+      "id": "7b8e6c84-6d9d-4f7a-99ba-74462ae2b3eb",
+      "algorithm": "ECDSA",
+      "algorithm_info": {
+        "Name": "ECDSA",
+        "DisplayName": "ECDSA (Elliptic Curve Digital Signature Algorithm)",
+        "Family": "signature",
+        "QuantumThreat": "CRITICAL",
+        "BaseQRS": 90,
+        "PQCSafe": false,
+        "PQCReplacement": [
+          "ML-DSA (FIPS 204)"
+        ],
+        "CWE": "CWE-327"
+      },
+      "source": "CODE",
+      "file_path": "cert.go",
+      "line_number": 4,
+      "line_content": "\"crypto/ecdsa\"",
+      "language": "go",
+      "qrs": 90,
+      "risk_band": "CRITICAL",
+      "migration_effort": "HARD",
+      "effort_rationale": "signature algorithm embedded in code; requires protocol updates",
+      "occurrence_count": 1,
+      "timestamp": "2026-06-01T23:12:29.1134561+05:30",
+      "introduced_at": "0001-01-01T00:00:00Z"
+    },
+    {
+      "id": "cdfbd6a6-6715-4732-828e-318e181cabd3",
+      "algorithm": "RSA",
+      "algorithm_info": {
+        "Name": "RSA",
+        "DisplayName": "RSA (Rivest–Shamir–Adleman)",
+        "Family": "asymmetric-encryption",
+        "QuantumThreat": "CRITICAL",
+        "BaseQRS": 90,
+        "PQCSafe": false,
+        "PQCReplacement": [
+          "ML-KEM (FIPS 203)"
+        ],
+        "CWE": "CWE-327"
+      },
+      "source": "CODE",
+      "file_path": "cert.go",
+      "line_number": 5,
+      "line_content": "\"crypto/rsa\"",
+      "language": "go",
+      "qrs": 90,
+      "risk_band": "CRITICAL",
+      "migration_effort": "HARD",
+      "effort_rationale": "asymmetric algorithm embedded in code; requires architectural changes",
+      "occurrence_count": 1,
+      "timestamp": "2026-06-01T23:12:29.1134561+05:30",
+      "introduced_at": "0001-01-01T00:00:00Z"
+    },
+    {
+      "id": "27b7dd8b-988e-4e4b-a245-55378d919ad1",
+      "algorithm": "RSA",
+      "algorithm_info": {
+        "Name": "RSA",
+        "DisplayName": "RSA (Rivest–Shamir–Adleman)",
+        "Family": "asymmetric-encryption",
+        "QuantumThreat": "CRITICAL",
+        "BaseQRS": 90,
+        "PQCSafe": false,
+        "PQCReplacement": [
+          "ML-KEM (FIPS 203)"
+        ],
+        "CWE": "CWE-327"
+      },
+      "source": "CODE",
+      "file_path": "cert.go",
+      "line_number": 47,
+      "line_content": "case x509.RSA:",
+      "language": "go",
+      "qrs": 90,
+      "risk_band": "CRITICAL",
+      "migration_effort": "HARD",
+      "effort_rationale": "asymmetric algorithm embedded in code; requires architectural changes",
+      "occurrence_count": 1,
+      "timestamp": "2026-06-01T23:12:29.1134561+05:30",
+      "introduced_at": "0001-01-01T00:00:00Z"
+    },
+    {
+      "id": "c7c19187-13ef-4b8c-998f-e72bff579755",
+      "algorithm": "ECDSA",
+      "algorithm_info": {
+        "Name": "ECDSA",
+        "DisplayName": "ECDSA (Elliptic Curve Digital Signature Algorithm)",
+        "Family": "signature",
+        "QuantumThreat": "CRITICAL",
+        "BaseQRS": 90,
+        "PQCSafe": false,
+        "PQCReplacement": [
+          "ML-DSA (FIPS 204)"
+        ],
+        "CWE": "CWE-327"
+      },
+      "source": "CODE",
+      "file_path": "cert.go",
+      "line_number": 266,
+      "line_content": "case *ecdsa.PublicKey:",
+      "language": "go",
+      "qrs": 90,
+      "risk_band": "CRITICAL",
+      "migration_effort": "HARD",
+      "effort_rationale": "signature algorithm embedded in code; requires protocol updates",
+      "occurrence_count": 1,
+      "timestamp": "2026-06-01T23:12:29.1134561+05:30",
+      "introduced_at": "0001-01-01T00:00:00Z"
+    },
+    {
+      "id": "750ed126-5937-4d57-b4b8-e02c7443081c",
+      "algorithm": "RSA",
+      "algorithm_info": {
+        "Name": "RSA",
+        "DisplayName": "RSA (Rivest–Shamir–Adleman)",
+        "Family": "asymmetric-encryption",
+        "QuantumThreat": "CRITICAL",
+        "BaseQRS": 90,
+        "PQCSafe": false,
+        "PQCReplacement": [
+          "ML-KEM (FIPS 203)"
+        ],
+        "CWE": "CWE-327"
+      },
+      "source": "CODE",
+      "file_path": "cert_test.go",
+      "line_number": 36,
+      "line_content": "t.Errorf(\"Expected RSA key size 1024, got %d\", f.KeySize)",
+      "language": "go",
+      "key_size": 1024,
+      "qrs": 90,
+      "risk_band": "CRITICAL",
+      "migration_effort": "HARD",
+      "effort_rationale": "asymmetric algorithm embedded in code; requires architectural changes",
+      "occurrence_count": 1,
+      "timestamp": "2026-06-01T23:12:29.1134561+05:30",
+      "introduced_at": "0001-01-01T00:00:00Z"
+    },
+    {
+      "id": "2aba29f8-3d3a-4525-91a0-b2bf6ecd3f88",
+      "algorithm": "RSA",
+      "algorithm_info": {
+        "Name": "RSA",
+        "DisplayName": "RSA (Rivest–Shamir–Adleman)",
+        "Family": "asymmetric-encryption",
+        "QuantumThreat": "CRITICAL",
+        "BaseQRS": 90,
+        "PQCSafe": false,
+        "PQCReplacement": [
+          "ML-KEM (FIPS 203)"
+        ],
+        "CWE": "CWE-327"
+      },
+      "source": "CODE",
+      "file_path": "cert_test.go",
+      "line_number": 55,
+      "line_content": "_ = \"rsa.GenerateKey\"",
+      "language": "go",
+      "qrs": 90,
+      "risk_band": "CRITICAL",
+      "migration_effort": "HARD",
+      "effort_rationale": "asymmetric algorithm embedded in code; requires architectural changes",
+      "occurrence_count": 1,
+      "timestamp": "2026-06-01T23:12:29.1134561+05:30",
+      "introduced_at": "0001-01-01T00:00:00Z"
+    },
+    {
+      "id": "6d436ccb-525d-4387-b3d0-b67262ab5e1e",
+      "algorithm": "ECDSA",
+      "algorithm_info": {
+        "Name": "ECDSA",
+        "DisplayName": "ECDSA (Elliptic Curve Digital Signature Algorithm)",
+        "Family": "signature",
+        "QuantumThreat": "CRITICAL",
+        "BaseQRS": 90,
+        "PQCSafe": false,
+        "PQCReplacement": [
+          "ML-DSA (FIPS 204)"
+        ],
+        "CWE": "CWE-327"
+      },
+      "source": "CODE",
+      "file_path": "config_scanner.go",
+      "line_number": 29,
+      "line_content": "{Regex: regexp.MustCompile(`(?i)(SHA[-_]?1|MD[-_]?5|DES|3DES|RC4|RSA[-_]?\\d*|ECDSA)\\b`), Group: 1},",
+      "language": "go",
+      "qrs": 90,
+      "risk_band": "CRITICAL",
+      "migration_effort": "HARD",
+      "effort_rationale": "signature algorithm embedded in code; requires protocol updates",
+      "occurrence_count": 1,
+      "timestamp": "2026-06-01T23:12:29.1134561+05:30",
+      "introduced_at": "0001-01-01T00:00:00Z"
+    },
+    {
+      "id": "754fd784-2c67-44bf-bc04-1997dc9a93ae",
+      "algorithm": "ECDH",
+      "algorithm_info": {
+        "Name": "ECDH",
+        "DisplayName": "ECDH (Elliptic Curve Diffie–Hellman)",
+        "Family": "key-agreement",
+        "QuantumThreat": "CRITICAL",
+        "BaseQRS": 90,
+        "PQCSafe": false,
+        "PQCReplacement": [
+          "ML-KEM (FIPS 203)"
+        ],
+        "CWE": "CWE-327"
+      },
+      "source": "CODE",
+      "file_path": "deps.go",
+      "line_number": 32,
+      "line_content": "\"elliptic\":   {Algorithms: []string{\"ECDSA\", \"ECDH\"}, Risk: \"HIGH\"},",
+      "language": "go",
+      "qrs": 90,
+      "risk_band": "CRITICAL",
+      "migration_effort": "HARD",
+      "effort_rationale": "asymmetric algorithm embedded in code; requires architectural changes",
+      "occurrence_count": 1,
+      "timestamp": "2026-06-01T23:12:29.1134561+05:30",
+      "introduced_at": "0001-01-01T00:00:00Z"
+    },
+    {
+      "id": "31131fc8-0c2c-4dcd-ae18-08d68d05274e",
+      "algorithm": "ECDSA",
+      "algorithm_info": {
+        "Name": "ECDSA",
+        "DisplayName": "ECDSA (Elliptic Curve Digital Signature Algorithm)",
+        "Family": "signature",
+        "QuantumThreat": "CRITICAL",
+        "BaseQRS": 90,
+        "PQCSafe": false,
+        "PQCReplacement": [
+          "ML-DSA (FIPS 204)"
+        ],
+        "CWE": "CWE-327"
+      },
+      "source": "CODE",
+      "file_path": "deps.go",
+      "line_number": 35,
+      "line_content": "\"jose\":       {Algorithms: []string{\"RSA\", \"ECDSA\"}, Risk: \"HIGH\"},",
+      "language": "go",
+      "qrs": 90,
+      "risk_band": "CRITICAL",
+      "migration_effort": "HARD",
+      "effort_rationale": "signature algorithm embedded in code; requires protocol updates",
+      "occurrence_count": 1,
+      "timestamp": "2026-06-01T23:12:29.1134561+05:30",
+      "introduced_at": "0001-01-01T00:00:00Z"
+    },
+    {
+      "id": "699e384c-2e4f-41dd-b3e8-53072be2be64",
+      "algorithm": "ECDSA",
+      "algorithm_info": {
+        "Name": "ECDSA",
+        "DisplayName": "ECDSA (Elliptic Curve Digital Signature Algorithm)",
+        "Family": "signature",
+        "QuantumThreat": "CRITICAL",
+        "BaseQRS": 90,
+        "PQCSafe": false,
+        "PQCReplacement": [
+          "ML-DSA (FIPS 204)"
+        ],
+        "CWE": "CWE-327"
+      },
+      "source": "CODE",
+      "file_path": "deps.go",
+      "line_number": 43,
+      "line_content": "\"PyJWT\":        {Algorithms: []string{\"RSA\", \"ECDSA\"}, Risk: \"HIGH\"},",
+      "language": "go",
+      "qrs": 90,
+      "risk_band": "CRITICAL",
+      "migration_effort": "HARD",
+      "effort_rationale": "signature algorithm embedded in code; requires protocol updates",
+      "occurrence_count": 1,
+      "timestamp": "2026-06-01T23:12:29.1134561+05:30",
+      "introduced_at": "0001-01-01T00:00:00Z"
+    },
+    {
+      "id": "9c45001a-5b19-4927-ac98-a7b6fa53445c",
+      "algorithm": "DES",
+      "algorithm_info": {
+        "Name": "DES",
+        "DisplayName": "DES (Data Encryption Standard)",
+        "Family": "symmetric-encryption",
+        "QuantumThreat": "HIGH",
+        "BaseQRS": 85,
+        "PQCSafe": false,
+        "PQCReplacement": [
+          "AES-256-GCM"
+        ],
+        "CWE": "CWE-327"
+      },
+      "source": "CODE",
+      "file_path": "deps.go",
+      "line_number": 59,
+      "line_content": "\"des\":  {Algorithms: []string{\"DES\"}, Risk: \"CRITICAL\"},",
+      "language": "go",
+      "qrs": 85,
+      "risk_band": "CRITICAL",
+      "migration_effort": "MEDIUM",
+      "effort_rationale": "symmetric cipher upgrade; review mode-of-operation compatibility",
+      "occurrence_count": 1,
+      "timestamp": "2026-06-01T23:12:29.1134561+05:30",
+      "introduced_at": "0001-01-01T00:00:00Z"
+    },
+    {
+      "id": "40da2340-4e8f-4531-b808-e28ffb2cdd15",
+      "algorithm": "MD5",
+      "algorithm_info": {
+        "Name": "MD5",
+        "DisplayName": "MD5",
+        "Family": "hash",
+        "QuantumThreat": "HIGH",
+        "BaseQRS": 80,
+        "PQCSafe": false,
+        "PQCReplacement": [
+          "SHA-256"
+        ],
+        "CWE": "CWE-328"
+      },
+      "source": "CODE",
+      "file_path": "deps.go",
+      "line_number": 38,
+      "line_content": "\"pycryptodome\": {Algorithms: []string{\"RSA\", \"DES\", \"3DES\", \"RC4\", \"MD5\", \"SHA1\"}, Risk: \"HIGH\"},",
+      "language": "go",
+      "qrs": 82,
+      "risk_band": "CRITICAL",
+      "migration_effort": "EASY",
+      "effort_rationale": "hash function swap; drop-in replacement available",
+      "occurrence_count": 2,
+      "timestamp": "2026-06-01T23:12:29.1134561+05:30",
+      "introduced_at": "0001-01-01T00:00:00Z"
+    },
+    {
+      "id": "3a7aad7d-1b6f-4898-bcf6-304ad60f1755",
+      "algorithm": "MD5",
+      "algorithm_info": {
+        "Name": "MD5",
+        "DisplayName": "MD5",
+        "Family": "hash",
+        "QuantumThreat": "HIGH",
+        "BaseQRS": 80,
+        "PQCSafe": false,
+        "PQCReplacement": [
+          "SHA-256"
+        ],
+        "CWE": "CWE-328"
+      },
+      "source": "CODE",
+      "file_path": "cert.go",
+      "line_number": 32,
+      "line_content": "x509.MD5WithRSA:      \"RSA+MD5\",",
+      "language": "go",
+      "qrs": 80,
+      "risk_band": "CRITICAL",
+      "migration_effort": "EASY",
+      "effort_rationale": "hash function swap; drop-in replacement available",
+      "occurrence_count": 1,
+      "timestamp": "2026-06-01T23:12:29.1134561+05:30",
+      "introduced_at": "0001-01-01T00:00:00Z"
+    },
+    {
+      "id": "c44ed108-5c0e-4b93-914a-ca2d3f8b8771",
+      "algorithm": "MD5",
+      "algorithm_info": {
+        "Name": "MD5",
+        "DisplayName": "MD5",
+        "Family": "hash",
+        "QuantumThreat": "HIGH",
+        "BaseQRS": 80,
+        "PQCSafe": false,
+        "PQCReplacement": [
+          "SHA-256"
+        ],
+        "CWE": "CWE-328"
+      },
+      "source": "CODE",
+      "file_path": "cert_test.go",
+      "line_number": 57,
+      "line_content": "_ = \"crypto/md5\"",
+      "language": "go",
+      "qrs": 80,
+      "risk_band": "CRITICAL",
+      "migration_effort": "EASY",
+      "effort_rationale": "hash function swap; drop-in replacement available",
+      "occurrence_count": 1,
+      "timestamp": "2026-06-01T23:12:29.1134561+05:30",
+      "introduced_at": "0001-01-01T00:00:00Z"
+    },
+    {
+      "id": "1b34abb6-c9f6-44e5-9555-9b97de5b2c63",
+      "algorithm": "MD5",
+      "algorithm_info": {
+        "Name": "MD5",
+        "DisplayName": "MD5",
+        "Family": "hash",
+        "QuantumThreat": "HIGH",
+        "BaseQRS": 80,
+        "PQCSafe": false,
+        "PQCReplacement": [
+          "SHA-256"
+        ],
+        "CWE": "CWE-328"
+      },
+      "source": "CODE",
+      "file_path": "deps.go",
+      "line_number": 29,
+      "line_content": "\"node-forge\": {Algorithms: []string{\"RSA\", \"DES\", \"3DES\", \"RC4\", \"MD5\", \"SHA1\"}, Risk: \"CRITICAL\"},",
+      "language": "go",
+      "qrs": 80,
+      "risk_band": "CRITICAL",
+      "migration_effort": "EASY",
+      "effort_rationale": "hash function swap; drop-in replacement available",
+      "occurrence_count": 1,
+      "timestamp": "2026-06-01T23:12:29.1134561+05:30",
+      "introduced_at": "0001-01-01T00:00:00Z"
+    },
+    {
+      "id": "b8cde28e-ef2a-419b-b162-d0679b5af797",
+      "algorithm": "MD5",
+      "algorithm_info": {
+        "Name": "MD5",
+        "DisplayName": "MD5",
+        "Family": "hash",
+        "QuantumThreat": "HIGH",
+        "BaseQRS": 80,
+        "PQCSafe": false,
+        "PQCReplacement": [
+          "SHA-256"
+        ],
+        "CWE": "CWE-328"
+      },
+      "source": "CODE",
+      "file_path": "deps.go",
+      "line_number": 31,
+      "line_content": "\"crypto-js\":  {Algorithms: []string{\"MD5\", \"SHA1\", \"DES\", \"3DES\", \"RC4\"}, Risk: \"HIGH\"},",
+      "language": "go",
+      "qrs": 80,
+      "risk_band": "CRITICAL",
+      "migration_effort": "EASY",
+      "effort_rationale": "hash function swap; drop-in replacement available",
+      "occurrence_count": 1,
+      "timestamp": "2026-06-01T23:12:29.1134561+05:30",
+      "introduced_at": "0001-01-01T00:00:00Z"
+    },
+    {
+      "id": "884c990a-8751-4b16-92a9-9ea686027de6",
+      "algorithm": "MD5",
+      "algorithm_info": {
+        "Name": "MD5",
+        "DisplayName": "MD5",
+        "Family": "hash",
+        "QuantumThreat": "HIGH",
+        "BaseQRS": 80,
+        "PQCSafe": false,
+        "PQCReplacement": [
+          "SHA-256"
+        ],
+        "CWE": "CWE-328"
+      },
+      "source": "CODE",
+      "file_path": "deps.go",
+      "line_number": 34,
+      "line_content": "\"forge\":      {Algorithms: []string{\"RSA\", \"DES\", \"MD5\"}, Risk: \"CRITICAL\"},",
+      "language": "go",
+      "qrs": 80,
+      "risk_band": "CRITICAL",
+      "migration_effort": "EASY",
+      "effort_rationale": "hash function swap; drop-in replacement available",
+      "occurrence_count": 1,
+      "timestamp": "2026-06-01T23:12:29.1134561+05:30",
+      "introduced_at": "0001-01-01T00:00:00Z"
+    },
+    {
+      "id": "dd03ddd0-f645-4804-b201-2cf1913ca997",
+      "algorithm": "MD5",
+      "algorithm_info": {
+        "Name": "MD5",
+        "DisplayName": "MD5",
+        "Family": "hash",
+        "QuantumThreat": "HIGH",
+        "BaseQRS": 80,
+        "PQCSafe": false,
+        "PQCReplacement": [
+          "SHA-256"
+        ],
+        "CWE": "CWE-328"
+      },
+      "source": "CODE",
+      "file_path": "deps.go",
+      "line_number": 46,
+      "line_content": "\"bcprov-jdk15on\":  {Algorithms: []string{\"RSA\", \"ECDSA\", \"DES\", \"MD5\", \"SHA1\"}, Risk: \"HIGH\"},",
+      "language": "go",
+      "qrs": 80,
+      "risk_band": "CRITICAL",
+      "migration_effort": "EASY",
+      "effort_rationale": "hash function swap; drop-in replacement available",
+      "occurrence_count": 1,
+      "timestamp": "2026-06-01T23:12:29.1134561+05:30",
+      "introduced_at": "0001-01-01T00:00:00Z"
+    },
+    {
+      "id": "2b7de9c3-641e-4667-bf48-5f2e28bc0ae4",
+      "algorithm": "MD5",
+      "algorithm_info": {
+        "Name": "MD5",
+        "DisplayName": "MD5",
+        "Family": "hash",
+        "QuantumThreat": "HIGH",
+        "BaseQRS": 80,
+        "PQCSafe": false,
+        "PQCReplacement": [
+          "SHA-256"
+        ],
+        "CWE": "CWE-328"
+      },
+      "source": "CODE",
+      "file_path": "deps.go",
+      "line_number": 50,
+      "line_content": "\"commons-codec\":   {Algorithms: []string{\"MD5\", \"SHA1\"}, Risk: \"HIGH\"},",
+      "language": "go",
+      "qrs": 80,
+      "risk_band": "CRITICAL",
+      "migration_effort": "EASY",
+      "effort_rationale": "hash function swap; drop-in replacement available",
+      "occurrence_count": 1,
+      "timestamp": "2026-06-01T23:12:29.1134561+05:30",
+      "introduced_at": "0001-01-01T00:00:00Z"
+    },
+    {
+      "id": "f9cda96a-f66a-4561-801e-48e249f47369",
+      "algorithm": "MD5",
+      "algorithm_info": {
+        "Name": "MD5",
+        "DisplayName": "MD5",
+        "Family": "hash",
+        "QuantumThreat": "HIGH",
+        "BaseQRS": 80,
+        "PQCSafe": false,
+        "PQCReplacement": [
+          "SHA-256"
+        ],
+        "CWE": "CWE-328"
+      },
+      "source": "CODE",
+      "file_path": "deps.go",
+      "line_number": 58,
+      "line_content": "\"md5\":  {Algorithms: []string{\"MD5\"}, Risk: \"HIGH\"},",
+      "language": "go",
+      "qrs": 80,
+      "risk_band": "CRITICAL",
+      "migration_effort": "EASY",
+      "effort_rationale": "hash function swap; drop-in replacement available",
+      "occurrence_count": 1,
+      "timestamp": "2026-06-01T23:12:29.1134561+05:30",
+      "introduced_at": "0001-01-01T00:00:00Z"
+    },
+    {
+      "id": "f7d9739b-6080-461a-a678-1887efac1737",
+      "algorithm": "SHA1",
+      "algorithm_info": {
+        "Name": "SHA1",
+        "DisplayName": "SHA-1",
+        "Family": "hash",
+        "QuantumThreat": "HIGH",
+        "BaseQRS": 70,
+        "PQCSafe": false,
+        "PQCReplacement": [
+          "SHA-256",
+          "SHA-3"
+        ],
+        "CWE": "CWE-328"
+      },
+      "source": "CODE",
+      "file_path": "cert.go",
+      "line_number": 31,
+      "line_content": "x509.SHA1WithRSA:     \"RSA+SHA1\",",
+      "language": "go",
+      "qrs": 70,
+      "risk_band": "HIGH",
+      "migration_effort": "EASY",
+      "effort_rationale": "hash function swap; drop-in replacement available",
+      "occurrence_count": 1,
+      "timestamp": "2026-06-01T23:12:29.1134561+05:30",
+      "introduced_at": "0001-01-01T00:00:00Z"
+    },
+    {
+      "id": "bb461beb-d274-4a08-be38-4a4c4d459d7b",
+      "algorithm": "SHA1",
+      "algorithm_info": {
+        "Name": "SHA1",
+        "DisplayName": "SHA-1",
+        "Family": "hash",
+        "QuantumThreat": "HIGH",
+        "BaseQRS": 70,
+        "PQCSafe": false,
+        "PQCReplacement": [
+          "SHA-256",
+          "SHA-3"
+        ],
+        "CWE": "CWE-328"
+      },
+      "source": "CODE",
+      "file_path": "cert_test.go",
+      "line_number": 39,
+      "line_content": "if f.Algorithm == \"SHA1\" {",
+      "language": "go",
+      "key_size": 1024,
+      "qrs": 70,
+      "risk_band": "HIGH",
+      "migration_effort": "EASY",
+      "effort_rationale": "hash function swap; drop-in replacement available",
+      "occurrence_count": 1,
+      "timestamp": "2026-06-01T23:12:29.1134561+05:30",
+      "introduced_at": "0001-01-01T00:00:00Z"
+    },
+    {
+      "id": "fb7c6c23-4277-4fc5-b12b-429f22e9e9f5",
+      "algorithm": "SHA1",
+      "algorithm_info": {
+        "Name": "SHA1",
+        "DisplayName": "SHA-1",
+        "Family": "hash",
+        "QuantumThreat": "HIGH",
+        "BaseQRS": 70,
+        "PQCSafe": false,
+        "PQCReplacement": [
+          "SHA-256",
+          "SHA-3"
+        ],
+        "CWE": "CWE-328"
+      },
+      "source": "CODE",
+      "file_path": "cert_test.go",
+      "line_number": 48,
+      "line_content": "t.Error(\"Did not find expected SHA1 signature finding in sample_weak.pem\")",
+      "language": "go",
+      "qrs": 70,
+      "risk_band": "HIGH",
+      "migration_effort": "EASY",
+      "effort_rationale": "hash function swap; drop-in replacement available",
+      "occurrence_count": 1,
+      "timestamp": "2026-06-01T23:12:29.1134561+05:30",
+      "introduced_at": "0001-01-01T00:00:00Z"
+    },
+    {
+      "id": "1b941d3f-5792-43ec-924b-db3930ca8b3d",
+      "algorithm": "SHA1",
+      "algorithm_info": {
+        "Name": "SHA1",
+        "DisplayName": "SHA-1",
+        "Family": "hash",
+        "QuantumThreat": "HIGH",
+        "BaseQRS": 70,
+        "PQCSafe": false,
+        "PQCReplacement": [
+          "SHA-256",
+          "SHA-3"
+        ],
+        "CWE": "CWE-328"
+      },
+      "source": "CODE",
+      "file_path": "cert_test.go",
+      "line_number": 56,
+      "line_content": "_ = \"sha1.New\"",
+      "language": "go",
+      "qrs": 70,
+      "risk_band": "HIGH",
+      "migration_effort": "EASY",
+      "effort_rationale": "hash function swap; drop-in replacement available",
+      "occurrence_count": 1,
+      "timestamp": "2026-06-01T23:12:29.1134561+05:30",
+      "introduced_at": "0001-01-01T00:00:00Z"
+    },
+    {
+      "id": "356c1340-21aa-40d5-89be-001e9c6adf5f",
+      "algorithm": "SHA1",
+      "algorithm_info": {
+        "Name": "SHA1",
+        "DisplayName": "SHA-1",
+        "Family": "hash",
+        "QuantumThreat": "HIGH",
+        "BaseQRS": 70,
+        "PQCSafe": false,
+        "PQCReplacement": [
+          "SHA-256",
+          "SHA-3"
+        ],
+        "CWE": "CWE-328"
+      },
+      "source": "CODE",
+      "file_path": "deps.go",
+      "line_number": 57,
+      "line_content": "\"sha1\": {Algorithms: []string{\"SHA1\"}, Risk: \"HIGH\"},",
+      "language": "go",
+      "qrs": 70,
+      "risk_band": "HIGH",
+      "migration_effort": "EASY",
+      "effort_rationale": "hash function swap; drop-in replacement available",
+      "occurrence_count": 1,
+      "timestamp": "2026-06-01T23:12:29.1134561+05:30",
+      "introduced_at": "0001-01-01T00:00:00Z"
+    }
+  ],
+  "aggregate_qrs": 86,
+  "findings_by_band": {
+    "CRITICAL": 28,
+    "HIGH": 5
+  },
+  "action_plan": [
+    {
+      "rank": 1,
+      "algorithm": "MD5",
+      "risk_band": "CRITICAL",
+      "occurrences": 9,
+      "effort": "EASY",
+      "priority_score": 91.44059888127559,
+      "recommendation": "Migrate to: SHA-256",
+      "replacement": [
+        "SHA-256"
+      ]
+    },
+    {
+      "rank": 2,
+      "algorithm": "SHA1",
+      "risk_band": "HIGH",
+      "occurrences": 5,
+      "effort": "EASY",
+      "priority_score": 76.27115814229819,
+      "recommendation": "Migrate to: SHA-256",
+      "replacement": [
+        "SHA-256",
+        "SHA-3"
+      ]
+    },
+    {
+      "rank": 3,
+      "algorithm": "DES",
+      "risk_band": "CRITICAL",
+      "occurrences": 1,
+      "effort": "MEDIUM",
+      "priority_score": 52.767525310427864,
+      "recommendation": "Migrate to: AES-256-GCM",
+      "replacement": [
+        "AES-256-GCM"
+      ]
+    },
+    {
+      "rank": 4,
+      "algorithm": "ECDSA",
+      "risk_band": "CRITICAL",
+      "occurrences": 10,
+      "effort": "HARD",
+      "priority_score": 30.90909547646175,
+      "recommendation": "Migrate to: ML-DSA (FIPS 204)",
+      "replacement": [
+        "ML-DSA (FIPS 204)"
+      ]
+    },
+    {
+      "rank": 5,
+      "algorithm": "RSA",
+      "risk_band": "CRITICAL",
+      "occurrences": 4,
+      "effort": "HARD",
+      "priority_score": 29.172741181786034,
+      "recommendation": "Migrate to: ML-KEM (FIPS 203)",
+      "replacement": [
+        "ML-KEM (FIPS 203)"
+      ]
+    },
+    {
+      "rank": 6,
+      "algorithm": "DSA",
+      "risk_band": "CRITICAL",
+      "occurrences": 2,
+      "effort": "HARD",
+      "priority_score": 29.116084958361988,
+      "recommendation": "Migrate to: ML-DSA (FIPS 204)",
+      "replacement": [
+        "ML-DSA (FIPS 204)"
+      ]
+    },
+    {
+      "rank": 7,
+      "algorithm": "ECDH",
+      "risk_band": "CRITICAL",
+      "occurrences": 2,
+      "effort": "HARD",
+      "priority_score": 29.116084958361988,
+      "recommendation": "Migrate to: ML-KEM (FIPS 203)",
+      "replacement": [
+        "ML-KEM (FIPS 203)"
+      ]
+    }
+  ]
+}
