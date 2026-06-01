@@ -347,9 +347,9 @@ ECDH:
 
 DSA:
   go:
-    - 'dsa\.GenerateKey'
-    - 'dsa\.Sign'
-    - 'dsa\.Verify'
+    - '\bdsa\.GenerateKey'
+    - '\bdsa\.Sign'
+    - '\bdsa\.Verify'
     - 'crypto/dsa'
   python:
     - 'dsa\.generate_private_key'
