@@ -6,3 +6,5 @@ function insecureLegacyFunction() {
     shasum.update('hunter2');
     return shasum.digest('hex');
 }
+
+// Trigger webhook!
