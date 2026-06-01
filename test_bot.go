@@ -1,4 +1,4 @@
-package main
+package dummy
 
 import (
 	"crypto/rsa"
