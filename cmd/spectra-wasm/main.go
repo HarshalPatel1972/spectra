@@ -18,7 +18,7 @@ import (
 // It returns a JSON string containing the ScanResult.
 func scanSpectra(this js.Value, args []js.Value) any {
 	if len(args) < 3 {
-		return js.ValueOf(\`{"error": "requires 3 arguments: code, language, filename"}\`)
+		return js.ValueOf(`{"error": "requires 3 arguments: code, language, filename"}`)
 	}
 
 	code := args[0].String()
@@ -29,14 +29,14 @@ func scanSpectra(this js.Value, args []js.Value) any {
 	// We can write the code to a temporary directory.
 	tmpDir, err := os.MkdirTemp("", "spectra-wasm-")
 	if err != nil {
-		return js.ValueOf(fmt.Sprintf(\`{"error": "failed to create temp dir: %v"}\`, err))
+		return js.ValueOf(fmt.Sprintf(`{"error": "failed to create temp dir: %v"}`, err))
 	}
 	defer os.RemoveAll(tmpDir)
 
 	filePath := filepath.Join(tmpDir, filename)
 	err = os.WriteFile(filePath, []byte(code), 0644)
 	if err != nil {
-		return js.ValueOf(fmt.Sprintf(\`{"error": "failed to write file: %v"}\`, err))
+		return js.ValueOf(fmt.Sprintf(`{"error": "failed to write file: %v"}`, err))
 	}
 
 	// Load patterns from the embedded rules or load hardcoded defaults if we can't embed.
@@ -55,15 +55,15 @@ func scanSpectra(this js.Value, args []js.Value) any {
 
 	// Create a new orchestrator and scan
 	// In spectra, scanner.ScanDirectory handles the whole flow.
-	res, err := scanner.ScanDirectory(tmpDir, []string{}, []string{"code"}, 1, registry, false)
+	res, err := scanner.ScanDirectory(tmpDir, "", []string{}, []string{"code"}, 1, registry, false)
 	if err != nil {
-		return js.ValueOf(fmt.Sprintf(\`{"error": "scan failed: %v"}\`, err))
+		return js.ValueOf(fmt.Sprintf(`{"error": "scan failed: %v"}`, err))
 	}
 
 	// Serialize result to JSON
 	out, err := json.Marshal(res)
 	if err != nil {
-		return js.ValueOf(fmt.Sprintf(\`{"error": "json marshal failed: %v"}\`, err))
+		return js.ValueOf(fmt.Sprintf(`{"error": "json marshal failed: %v"}`, err))
 	}
 
 	return js.ValueOf(string(out))
