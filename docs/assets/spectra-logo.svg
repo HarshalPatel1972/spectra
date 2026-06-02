@@ -1,0 +1,25 @@
+<svg width="240" height="40" viewBox="0 0 240 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Mark Background -->
+  <rect width="120" height="40" fill="#0A0B0F" />
+  <!-- SAFE -->
+  <rect x="10" y="0" width="2" height="40" fill="#16A34A" />
+  <!-- LOW -->
+  <rect x="25" y="0" width="2" height="40" fill="#22C55E" />
+  <!-- MEDIUM -->
+  <rect x="50" y="0" width="4" height="40" fill="#FACC15" />
+  <!-- HIGH -->
+  <rect x="70" y="0" width="4" height="40" fill="#F97316" />
+  <!-- HIGH-CRITICAL boundary (Gradient) -->
+  <defs>
+    <linearGradient id="hc-grad" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stopColor="#F97316" />
+      <stop offset="100%" stopColor="#EF4444" />
+    </linearGradient>
+  </defs>
+  <rect x="90" y="0" width="8" height="40" fill="url(#hc-grad)" />
+  <!-- CRITICAL -->
+  <rect x="108" y="0" width="8" height="40" fill="#EF4444" />
+  
+  <!-- Wordmark -->
+  <text x="135" y="27" fill="#1A1B25" font-family="'Spectral', serif" font-size="24" font-weight="400" letter-spacing="1.2">SPECTRA</text>
+</svg>

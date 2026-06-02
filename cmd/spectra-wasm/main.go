@@ -5,10 +5,9 @@ package main
 import (
 	"encoding/json"
 	"fmt"
-	"os"
-	"path/filepath"
 	"syscall/js"
 
+	"github.com/HarshalPatel1972/spectra"
 	"github.com/HarshalPatel1972/spectra/internal/detector"
 	"github.com/HarshalPatel1972/spectra/internal/scanner"
 )
@@ -18,52 +17,36 @@ import (
 // It returns a JSON string containing the ScanResult.
 func scanSpectra(this js.Value, args []js.Value) any {
 	if len(args) < 3 {
-		return js.ValueOf(\`{"error": "requires 3 arguments: code, language, filename"}\`)
+		return js.ValueOf(`{"error": "requires 3 arguments: code, language, filename"}`)
 	}
 
 	code := args[0].String()
-	// language := args[1].String()
-	filename := args[2].String()
-
-	// In the Go WASM environment, the OS provides an in-memory filesystem.
-	// We can write the code to a temporary directory.
-	tmpDir, err := os.MkdirTemp("", "spectra-wasm-")
-	if err != nil {
-		return js.ValueOf(fmt.Sprintf(\`{"error": "failed to create temp dir: %v"}\`, err))
+	language := ""
+	if len(args) > 1 {
+		language = args[1].String()
 	}
-	defer os.RemoveAll(tmpDir)
-
-	filePath := filepath.Join(tmpDir, filename)
-	err = os.WriteFile(filePath, []byte(code), 0644)
-	if err != nil {
-		return js.ValueOf(fmt.Sprintf(\`{"error": "failed to write file: %v"}\`, err))
+	filename := "unknown"
+	if len(args) > 2 {
+		filename = args[2].String()
 	}
 
-	// Load patterns from the embedded rules or load hardcoded defaults if we can't embed.
-	// Note: We need a PatternRegistry. For simplicity in WASM, we'll try to load it from disk
-	// or assume the caller passed the patterns. Wait, spectra includes patterns via embed in a real setup,
-	// but currently the detector loads from rules/crypto_patterns.yaml.
-	// Let's assume detector has a way to load from bytes or we mock it.
-	
-	// Since we are running in WASM, we must ensure we have the patterns.
-	// For now, we will construct an empty or minimal registry if loading fails.
-	registry, err := detector.LoadPatterns("rules/crypto_patterns.yaml")
+	// Load patterns from the embedded rules
+	registry, err := detector.LoadPatternsFromBytes(spectra.DefaultPatternsYAML)
 	if err != nil {
-		// Fallback for WASM environment if file is missing
+		// Fallback for WASM environment if file is missing (should not happen with embed)
 		registry = &detector.PatternRegistry{ByLanguage: make(map[string][]detector.PatternEntry)}
 	}
 
-	// Create a new orchestrator and scan
-	// In spectra, scanner.ScanDirectory handles the whole flow.
-	res, err := scanner.ScanDirectory(tmpDir, []string{}, []string{"code"}, 1, registry, false)
+	// Create a new orchestrator and scan entirely in memory
+	res, err := scanner.ScanString(code, filename, language, registry)
 	if err != nil {
-		return js.ValueOf(fmt.Sprintf(\`{"error": "scan failed: %v"}\`, err))
+		return js.ValueOf(fmt.Sprintf(`{"error": "scan failed: %v"}`, err))
 	}
 
 	// Serialize result to JSON
 	out, err := json.Marshal(res)
 	if err != nil {
-		return js.ValueOf(fmt.Sprintf(\`{"error": "json marshal failed: %v"}\`, err))
+		return js.ValueOf(fmt.Sprintf(`{"error": "json marshal failed: %v"}`, err))
 	}
 
 	return js.ValueOf(string(out))
