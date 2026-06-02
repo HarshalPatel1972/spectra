@@ -21,21 +21,7 @@ $ spectra scan .
 
 ## The Output
 
-```bash
-$ spectra scan ./myapp
-▓ Scanning 847 files in 12 packages...
-
-CRITICAL  RSA-2048     auth/jwt.go:47              QRS: 90
-CRITICAL  RSA-2048     pkg/crypto/key.go:12        QRS: 90
-HIGH      SHA-1        legacy/hash_util.go:91      QRS: 70
-HIGH      ECDSA/P-256  certs/api.pem               QRS: 85
-
-──────────────────────────────────────────────────────────
-Aggregate QRS: 83/100 — CRITICAL
-Compliance: 47 gaps with CNSA 2.0
-
-Run spectra simulate --from RSA --to ML-KEM to generate your migration plan.
-```
+<img src="./docs/assets/demo.svg" alt="Spectra Scan Output" width="800" />
 
 ## Why Spectra?
 

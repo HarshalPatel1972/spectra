@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400" width="800" height="400">
+  <rect width="800" height="400" rx="8" fill="#07080A"/>
+  
+  <style>
+    .txt { font-family: 'JetBrains Mono', monospace; font-size: 14px; fill: #9CA3AF; }
+    .prompt { fill: #6B7280; }
+    .cmd { fill: #FAFAF8; }
+    .crit { fill: #EF4444; }
+    .high { fill: #F97316; }
+    .white { fill: #F5F4F0; }
+    .calib { fill: #3B82F6; }
+    .divider { stroke: #2A2B35; stroke-width: 1; }
+    
+    @keyframes type { from { opacity: 0; } to { opacity: 1; } }
+    @keyframes pop { 0% { opacity: 0; transform: translateX(-10px); } 100% { opacity: 1; transform: translateX(0); } }
+    
+    .l1 { animation: type 0.1s forwards; }
+    .l2 { opacity: 0; animation: type 0.1s forwards 0.5s; }
+    .l3 { opacity: 0; animation: pop 0.2s forwards 1.2s; }
+    .l4 { opacity: 0; animation: pop 0.2s forwards 1.4s; }
+    .l5 { opacity: 0; animation: pop 0.2s forwards 1.6s; }
+    .l6 { opacity: 0; animation: pop 0.2s forwards 1.8s; }
+    .l7 { opacity: 0; animation: pop 0.2s forwards 2.2s; }
+  </style>
+
+  <g transform="translate(20, 30)">
+    <text class="txt l1"><tspan class="prompt">$ </tspan><tspan class="cmd">spectra scan ./myapp</tspan></text>
+    <text y="30" class="txt l2">▓ Scanning 847 files in 12 packages...</text>
+    
+    <text y="70" class="txt l3"><tspan class="crit">CRITICAL</tspan>  <tspan class="white" font-weight="bold">RSA-2048</tspan>     auth/jwt.go:47              QRS: 90</text>
+    <text y="90" class="txt l4"><tspan class="crit">CRITICAL</tspan>  <tspan class="white" font-weight="bold">RSA-2048</tspan>     pkg/crypto/key.go:12        QRS: 90</text>
+    <text y="110" class="txt l5"><tspan class="high">HIGH</tspan>      <tspan class="white" font-weight="bold">SHA-1</tspan>        legacy/hash_util.go:91      QRS: 70</text>
+    <text y="130" class="txt l6"><tspan class="high">HIGH</tspan>      <tspan class="white" font-weight="bold">ECDSA/P-256</tspan>  certs/api.pem               QRS: 85</text>
+    
+    <g class="l7">
+      <line x1="0" y1="160" x2="760" y2="160" class="divider"/>
+      <text y="190" class="txt">Aggregate QRS: <tspan class="white">83/100 — </tspan><tspan class="crit">CRITICAL</tspan></text>
+      <text y="215" class="txt">Compliance: <tspan class="white">47 gaps with CNSA 2.0</tspan></text>
+      
+      <text y="260" class="txt white">Run <tspan class="calib">spectra simulate --from RSA --to ML-KEM</tspan> to generate your migration plan.</text>
+    </g>
+  </g>
+</svg>
