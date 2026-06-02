@@ -1,53 +1,52 @@
-<img src="./docs/assets/spectra-logo.svg" alt="Spectra Logo" width="240" />
+<div align="center">
+  <img src="https://raw.githubusercontent.com/HarshalPatel1972/spectra-site/main/landing/public/spectra-mark.svg" height="48" alt="Spectra" />
+  <br />
+  <img src="https://raw.githubusercontent.com/HarshalPatel1972/spectra-site/main/landing/public/spectra-wordmark.svg" height="20" alt="Spectra" />
+  <br /><br />
 
-### See every cipher. Own your migration.
+  [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT) [![QRS: 8](https://img.shields.io/badge/QRS-8%2F100-success.svg)](#) [![Format: CycloneDX](https://img.shields.io/badge/Format-CycloneDX_1.7-blue)](#)
 
-[![CI](https://github.com/HarshalPatel1972/spectra/actions/workflows/ci.yml/badge.svg)](https://github.com/HarshalPatel1972/spectra/actions/workflows/ci.yml)
-[![Go 1.25](https://img.shields.io/badge/go-1.25-blue?style=flat&logo=go)](https://go.dev)
-[![License MIT](https://img.shields.io/badge/license-MIT-green?style=flat)](LICENSE)
-[![Spectra QRS: 8](https://img.shields.io/badge/Spectra_QRS-8%2F100_SAFE-16A34A?style=flat)](https://spectra-site-psi.vercel.app)
+  <br />
 
-**The forensic instrument that makes an organization's cryptographic landscape visible, scorable, and navigable.**
+  **Cryptographic asset discovery & quantum risk intelligence for engineering teams.**
+
+</div>
+
+---
+
+## What Spectra Does
+
+Spectra is a precision instrument that maps cryptographic assets across code, certificates, and dependencies, scores them against the quantum threat, and generates evidence-based migration plans.
+
+## Quick Start
 
 ```bash
-$ brew install harshalpatel1972/tap/spectra
-$ cd your-project
-$ spectra scan .
+# macOS / Linux
+brew install harshalpatel1972/tap/spectra
+
+# Go
+go install github.com/HarshalPatel1972/spectra/cmd/spectra@latest
+
+# Docker
+docker run --rm -v $(pwd):/w ghcr.io/harshalpatel1972/spectra scan /w
 ```
 
-[Documentation](https://github.com/HarshalPatel1972/spectra/tree/main/docs) • [Playground](https://spectra-site-psi.vercel.app/playground) • [Discord](https://discord.gg/spectra)
+## Formats
 
----
+`terminal` `json` `cbom` `html`
 
-## The Output
+## Integrations
 
-<img src="./docs/assets/demo.svg" alt="Spectra Scan Output" width="800" />
+[GitHub Actions](https://github.com/HarshalPatel1972/spectra-action) · [VS Code](https://github.com/HarshalPatel1972/spectra-vscode) · [Docker](https://hub.docker.com/r/harshalpatel1972/spectra)
 
-## Why Spectra?
+## Standards Coverage
 
-No tool combines high cryptographic specificity with high analytical precision. 
+CNSA 2.0 · NIST SP 800-131A Rev 2 · PCI DSS v4.0 · CycloneDX 1.7 CBOM
 
-Spectra scans codebases, certificates, and dependencies for quantum-vulnerable cryptography like RSA, ECC, and SHA-1. It tells you what cryptography you use, what it means, and what to do about it.
+## Contributing
 
-*   **Code-level detection**: Native parsing for Go, Python, Java, JS, C++, Rust.
-*   **Certificate scanning**: Full X.509 parsing for PEM/DER files to detect vulnerable key pairs.
-*   **CycloneDX 1.7 CBOMs**: The industry standard Cryptographic Bill of Materials out-of-the-box.
-*   **NSA CNSA 2.0 Gap Analysis**: Real-time evaluation against the 2030/2033 migration deadlines.
-*   **Local-first Privacy**: No telemetry, no accounts, no analytics. Your code never leaves your machine.
+Read [CONTRIBUTING.md](CONTRIBUTING.md). All pattern contributions welcome.
 
-## SPECTRA ATLAS (Relationship Graph)
-Understand the blast radius of your cryptography. `spectra graph` maps the exact files relying on specific algorithms so you know what will break when you upgrade.
+## License
 
-## SPECTRA FORGE (Migration Simulator)
-The quantum transition is too large to do at once. `spectra simulate` produces a multi-wave migration plan prioritizing high-risk, low-effort assets first.
-
-## SPECTRA MERIDIAN (Compliance Engine)
-Run `spectra compliance` to map your current cryptographic posture against NIST SP 800-131A Rev 2, NSA CNSA 2.0, and PCI-DSS v4.0.
-
----
-
-### Trust
-We scan Spectra itself. Our own QRS is **8/100** (deliberate low-risk test fixtures). Every finding Spectra produces links directly to the NIST, NSA, or IETF standard that defines it as a vulnerability.
-
-### License
-MIT License. See [LICENSE](LICENSE) for details.
+[MIT License](LICENSE) · No telemetry · No account required
