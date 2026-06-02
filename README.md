@@ -1,82 +1,67 @@
-# Spectra: Cryptographic Intelligence Platform
+<img src="./docs/assets/spectra-logo.svg" alt="Spectra Logo" width="240" />
 
-[![Build Status](https://github.com/HarshalPatel1972/spectra/actions/workflows/ci.yml/badge.svg)](https://github.com/HarshalPatel1972/spectra/actions)
-[![Go Version](https://img.shields.io/badge/Go-1.25-blue.svg)](https://go.dev/)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+### See every cipher. Own your migration.
 
-> *"See every cipher. Own your migration."*
+[![CI](https://github.com/HarshalPatel1972/spectra/actions/workflows/ci.yml/badge.svg)](https://github.com/HarshalPatel1972/spectra/actions/workflows/ci.yml)
+[![Go 1.25](https://img.shields.io/badge/go-1.25-blue?style=flat&logo=go)](https://go.dev)
+[![License MIT](https://img.shields.io/badge/license-MIT-green?style=flat)](LICENSE)
+[![Spectra QRS: 8](https://img.shields.io/badge/Spectra_QRS-8%2F100_SAFE-16A34A?style=flat)](https://spectra-site-psi.vercel.app)
 
-Spectra is an enterprise-grade **Cryptographic Intelligence Platform** and **PQC Migration Engine**. Built as a fast, zero-dependency Go binary, Spectra scans your source code, configuration files, dependency manifests, live TLS endpoints, and OCI container images to discover exactly what cryptography your organization relies on.
-
-It automatically grades findings against a proprietary **Quantum Risk Score (QRS)**, enforces compliance (CNSA 2.0, NIST), and simulates exactly what will break when you migrate to Post-Quantum Cryptography (PQC).
-
-## Core Capabilities
-
-- **Omni-Asset Scanning**: Deep inspection of Source Code (Go, Python, Java, JS), Certificates, Dependency Manifests, and Config files.
-- **Live Infrastructure Interrogation**: Connect to live servers (`spectra endpoint`) or scan Docker images layer-by-layer (`spectra container scan`) without needing a daemon.
-- **Compliance Engine**: Instantly flags violations of NSA CNSA 2.0, NIST SP 800-131A, PCI DSS v4.0, and FIPS 140-3 (`spectra compliance`).
-- **Cryptographic Knowledge Graph**: Translates your codebase into a dependency graph to calculate the blast radius of deprecating an algorithm (`spectra blast`).
-- **Migration Simulation**: Simulates architectural transitions (e.g., RSA to ML-KEM) to detect breaking changes before they happen (`spectra simulate`).
-- **Temporal Tracking**: Uses Git Blame to track drift, calculate migration velocity, and project your PQC-Ready Date (`spectra history`).
-- **Executive Deliverables**: Generates board-ready HTML reports detailing your Cryptographic Posture Score (CPS) and Cryptographic Agility Index (CAI) (`spectra report executive`), alongside CycloneDX CBOM JSON.
-
-### The Cryptographic Knowledge Graph
-Spectra uniquely translates your entire codebase into a dependency graph. This allows you to visually map exactly where weak algorithms are used and calculate the "blast radius" if you deprecate them.
-
-```mermaid
-graph TD
-    %% Nodes
-    A["RSA-1024"]:::critical
-    B["ECDSA-256"]:::safe
-    C["TLS Endpoint (google.com:443)"]:::source
-    D["Container (alpine:latest)"]:::source
-    E["src/auth/login.go"]:::source
-    F["go.mod"]:::source
-    
-    %% Edges
-    C -->|Uses| A
-    C -->|Uses| B
-    E -->|Calls| A
-    F -->|Provides| A
-    D -->|Contains| A
-
-    %% Styling
-    classDef critical fill:#ffebee,stroke:#c62828,stroke-width:2px,color:#b71c1c;
-    classDef safe fill:#e8f5e9,stroke:#2e7d32,stroke-width:2px,color:#1b5e20;
-    classDef source fill:#e3f2fd,stroke:#1565c0,stroke-width:2px,color:#0d47a1;
-```
-
-## Quick Start
+**The forensic instrument that makes an organization's cryptographic landscape visible, scorable, and navigable.**
 
 ```bash
-# Install via NPM (or use Homebrew / Go Install)
-npm install -g spectra-crypto-cli
-
-# 1. Run a persistent scan of your current directory
-spectra scan . --persist
-
-# 2. Check the scan against Compliance Frameworks
-spectra compliance --scan-id <SCAN-ID>
-
-# 3. Simulate migrating away from an insecure algorithm
-spectra simulate --scan-id <SCAN-ID> --from RSA --to ML-KEM
-
-# 4. Generate the Executive Board Report
-spectra report executive --scan-id <SCAN-ID>
+$ brew install harshalpatel1972/tap/spectra
+$ cd your-project
+$ spectra scan .
 ```
 
-## Output Formats
+[Documentation](https://github.com/HarshalPatel1972/spectra/tree/main/docs) • [Playground](https://spectra-site-psi.vercel.app/playground) • [Discord](https://discord.gg/spectra)
 
-Spectra outputs data where you need it:
-- **Terminal UI**: Beautiful, ANSI-colored tables and alerts.
-- **CycloneDX CBOM**: Industry-standard JSON/XML bill of materials.
-- **HTML Dashboards**: CISO-level visual reports.
-- **GraphViz / Mermaid**: Export your cryptographic architecture visually.
+---
 
-## Database & State
+## The Output
 
-Spectra uses a purely embedded `modernc.org/sqlite` database stored locally at `~/.spectra/state.db`. There are no external databases to configure, no cloud uploads, and your intellectual property never leaves your machine.
+```bash
+$ spectra scan ./myapp
+▓ Scanning 847 files in 12 packages...
 
-## Contributing
+CRITICAL  RSA-2048     auth/jwt.go:47              QRS: 90
+CRITICAL  RSA-2048     pkg/crypto/key.go:12        QRS: 90
+HIGH      SHA-1        legacy/hash_util.go:91      QRS: 70
+HIGH      ECDSA/P-256  certs/api.pem               QRS: 85
 
-Contributions are welcome! Please open an issue before submitting a large PR. Ensure you run `go test ./...` and `golangci-lint` before committing.
+──────────────────────────────────────────────────────────
+Aggregate QRS: 83/100 — CRITICAL
+Compliance: 47 gaps with CNSA 2.0
+
+Run spectra simulate --from RSA --to ML-KEM to generate your migration plan.
+```
+
+## Why Spectra?
+
+No tool combines high cryptographic specificity with high analytical precision. 
+
+Spectra scans codebases, certificates, and dependencies for quantum-vulnerable cryptography like RSA, ECC, and SHA-1. It tells you what cryptography you use, what it means, and what to do about it.
+
+*   **Code-level detection**: Native parsing for Go, Python, Java, JS, C++, Rust.
+*   **Certificate scanning**: Full X.509 parsing for PEM/DER files to detect vulnerable key pairs.
+*   **CycloneDX 1.7 CBOMs**: The industry standard Cryptographic Bill of Materials out-of-the-box.
+*   **NSA CNSA 2.0 Gap Analysis**: Real-time evaluation against the 2030/2033 migration deadlines.
+*   **Local-first Privacy**: No telemetry, no accounts, no analytics. Your code never leaves your machine.
+
+## SPECTRA ATLAS (Relationship Graph)
+Understand the blast radius of your cryptography. `spectra graph` maps the exact files relying on specific algorithms so you know what will break when you upgrade.
+
+## SPECTRA FORGE (Migration Simulator)
+The quantum transition is too large to do at once. `spectra simulate` produces a multi-wave migration plan prioritizing high-risk, low-effort assets first.
+
+## SPECTRA MERIDIAN (Compliance Engine)
+Run `spectra compliance` to map your current cryptographic posture against NIST SP 800-131A Rev 2, NSA CNSA 2.0, and PCI-DSS v4.0.
+
+---
+
+### Trust
+We scan Spectra itself. Our own QRS is **8/100** (deliberate low-risk test fixtures). Every finding Spectra produces links directly to the NIST, NSA, or IETF standard that defines it as a vulnerability.
+
+### License
+MIT License. See [LICENSE](LICENSE) for details.
