@@ -7,6 +7,7 @@ import (
 	"fmt"
 	"syscall/js"
 
+	"github.com/HarshalPatel1972/spectra"
 	"github.com/HarshalPatel1972/spectra/internal/detector"
 	"github.com/HarshalPatel1972/spectra/internal/scanner"
 )
@@ -29,10 +30,10 @@ func scanSpectra(this js.Value, args []js.Value) any {
 		filename = args[2].String()
 	}
 
-	// Load patterns from the embedded rules or load hardcoded defaults if we can't embed.
-	registry, err := detector.LoadPatterns("rules/crypto_patterns.yaml")
+	// Load patterns from the embedded rules
+	registry, err := detector.LoadPatternsFromBytes(spectra.DefaultPatternsYAML)
 	if err != nil {
-		// Fallback for WASM environment if file is missing
+		// Fallback for WASM environment if file is missing (should not happen with embed)
 		registry = &detector.PatternRegistry{ByLanguage: make(map[string][]detector.PatternEntry)}
 	}
 
