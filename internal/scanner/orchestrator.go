@@ -85,6 +85,93 @@ func scannerEnabled(name string, enabled []string) bool {
 	return false
 }
 
+// ScanString processes a single string of code and returns a complete ScanResult.
+// This is primarily used for WASM and API integrations where writing to disk is not possible.
+func ScanString(code string, filename string, language string, patternRegistry *detector.PatternRegistry) (*ScanResult, error) {
+	startedAt := time.Now()
+	
+	findings, err := ScanCodeString(code, filename, language, patternRegistry)
+	if err != nil {
+		return nil, err
+	}
+	
+	// Post-process findings
+	now := time.Now()
+	for i := range findings {
+		f := &findings[i]
+		f.Timestamp = now
+		if f.OccurrenceCount < 1 {
+			f.OccurrenceCount = 1
+		}
+		f.QRS = detector.ComputeQRS(f.AlgorithmInfo, f.KeySize, f.OccurrenceCount)
+		f.RiskBand = detector.QRSToBand(f.QRS)
+		effort, rationale := detector.ClassifyEffort(f.Source, f.Algorithm)
+		f.MigrationEffort = effort
+		f.EffortRationale = rationale
+	}
+	
+	// Sort findings
+	sort.Slice(findings, func(i, j int) bool {
+		if findings[i].QRS != findings[j].QRS {
+			return findings[i].QRS > findings[j].QRS
+		}
+		if findings[i].FilePath != findings[j].FilePath {
+			return findings[i].FilePath < findings[j].FilePath
+		}
+		return findings[i].LineNumber < findings[j].LineNumber
+	})
+	
+	// Aggregate QRS
+	qrsValues := make([]int, len(findings))
+	for i, f := range findings {
+		qrsValues[i] = f.QRS
+	}
+	aggregateQRS := detector.AggregateQRS(qrsValues)
+	
+	// Findings by band
+	findingsByBand := make(map[detector.RiskBand]int)
+	for _, f := range findings {
+		findingsByBand[f.RiskBand]++
+	}
+	
+	// Action plan
+	summaries := make([]detector.FindingSummary, len(findings))
+	for i, f := range findings {
+		summaries[i] = detector.FindingSummary{
+			Algorithm:       f.Algorithm,
+			QRS:             f.QRS,
+			MigrationEffort: f.MigrationEffort,
+		}
+	}
+	planItems := detector.BuildActionPlan(summaries)
+	actionPlan := make([]ActionItem, len(planItems))
+	for i, item := range planItems {
+		actionPlan[i] = ActionItem{
+			Rank:           i + 1,
+			Algorithm:      item.Algorithm,
+			RiskBand:       item.RiskBand,
+			Occurrences:    item.Occurrences,
+			Effort:         item.Effort,
+			PriorityScore:  item.PriorityScore,
+			Recommendation: item.Recommendation,
+			Replacement:    item.Replacement,
+		}
+	}
+	
+	return &ScanResult{
+		ScanRoot:       filename,
+		StartedAt:      startedAt,
+		CompletedAt:    time.Now(),
+		TotalFiles:     1,
+		ScannedFiles:   1,
+		SkippedFiles:   0,
+		Findings:       findings,
+		AggregateQRS:   aggregateQRS,
+		FindingsByBand: findingsByBand,
+		ActionPlan:     actionPlan,
+	}, nil
+}
+
 // ScanDirectory orchestrates a full scan of the given root directory. It fans
 // out to each enabled scanner (code, cert, deps, config), collects findings,
 // computes Quantum Risk Scores, classifies migration effort, and builds a

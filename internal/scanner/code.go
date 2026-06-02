@@ -257,6 +257,26 @@ func ScanCodeFiles(root string, excludes []string, registry *detector.PatternReg
 	return findings, stats, nil
 }
 
+// ScanCodeString scans a single file's content entirely in memory.
+func ScanCodeString(code string, filename string, language string, registry *detector.PatternRegistry) ([]Finding, error) {
+	lines := strings.Split(code, "\n")
+	
+	// Get applicable patterns.
+	var patterns []detector.PatternEntry
+	if language != "" && registry != nil {
+		patterns = append(patterns, registry.ByLanguage[language]...)
+	}
+	if registry != nil {
+		patterns = append(patterns, registry.Generic...)
+	}
+	
+	if len(patterns) == 0 {
+		return nil, nil
+	}
+	
+	return scanLines(lines, filename, filename, language, patterns)
+}
+
 // scanFileLines reads a file line by line and matches each line against the
 // provided patterns. Returns findings for all matches.
 func scanFileLines(absPath, relPath, language string, patterns []detector.PatternEntry) ([]Finding, error) {
@@ -266,7 +286,6 @@ func scanFileLines(absPath, relPath, language string, patterns []detector.Patter
 	}
 	defer f.Close()
 
-	var findings []Finding
 	var lines []string
 
 	scanner := bufio.NewScanner(f)
@@ -277,6 +296,13 @@ func scanFileLines(absPath, relPath, language string, patterns []detector.Patter
 	if err := scanner.Err(); err != nil {
 		return nil, err
 	}
+
+	return scanLines(lines, absPath, relPath, language, patterns)
+}
+
+// scanLines processes a slice of strings (lines) and matches each line against patterns.
+func scanLines(lines []string, absPath, relPath, language string, patterns []detector.PatternEntry) ([]Finding, error) {
+	var findings []Finding
 
 	// Track consecutive duplicate findings for deduplication.
 	type dedupKey struct {
